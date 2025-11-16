@@ -21,7 +21,7 @@ use yii\helpers\Url;
     $classes = ['row align-items-center  p-1 border mt-1'];
     $classes[] = 'border-primary';
 
-    echo Html::beginTag('div', ['class' => implode(' ', $classes), 'cms-list-line' => $model->id]);
+    echo Html::beginTag('div', ['class' => implode(' ', $classes), 'fractal-cms-core-list-line' => $model->id]);
     $deep = $model->order;
     $className = [];
     $className[] = 'col-sm-6';

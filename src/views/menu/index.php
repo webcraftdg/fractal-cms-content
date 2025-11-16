@@ -58,7 +58,7 @@ $this->title = $title.' : liste des menus';
                     $classes[] = 'border-primary';
                 }
 
-             echo Html::beginTag('div', ['class' => implode(' ', $classes), 'cms-list-line' => $model->id]);
+             echo Html::beginTag('div', ['class' => implode(' ', $classes), 'fractal-cms-core-list-line' => $model->id]);
                 $className = [];
                 $className[] = 'col';
                 $classMargin = 'p-0';

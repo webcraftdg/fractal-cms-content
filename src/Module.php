@@ -13,6 +13,7 @@ namespace fractalCms\content;
 
 
 use Exception;
+use fractalCms\content\assets\WebpackAsset;
 use fractalCms\content\components\UrlRule;
 use fractalCms\content\helpers\Menu;
 use fractalCms\content\helpers\ConfigType;
@@ -85,6 +86,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     {
         try {
             //Add rules to create an parse cms url
+            WebpackAsset::register($app->view);
             $app->urlManager->addRules([
                 [
                     'class' => UrlRule::class,

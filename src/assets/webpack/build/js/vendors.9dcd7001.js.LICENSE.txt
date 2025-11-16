@@ -65,8 +65,8 @@
  * Copyright (c) 2011-2025 Jos de Jong, http://jsoneditoronline.org
  *
  * @author  Jos de Jong, <wjosdejong@gmail.com>
- * @version 10.4.0
- * @date    2025-08-22
+ * @version 10.4.2
+ * @date    2025-10-15
  */
 
 /*! https://mths.be/punycode v1.4.0 by @mathias */

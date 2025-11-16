@@ -47,7 +47,7 @@ use yii\helpers\Url;
             foreach ($models as $model) {
                 $classes = ['row align-items-center  p-1 border mt-1'];
                 $classes[] = 'border-primary';
-             echo Html::beginTag('div', ['class' => implode(' ', $classes), 'cms-list-line' => $model->id]);
+             echo Html::beginTag('div', ['class' => implode(' ', $classes), 'fractal-cms-core-list-line' => $model->id]);
                  echo Html::tag('div', ucfirst($model->name), ['class' => 'col']);
                  echo Html::tag('div', ucfirst($model->config), ['class' => 'col']);
                  echo Html::beginTag('div', ['class' => 'col-sm-3']);

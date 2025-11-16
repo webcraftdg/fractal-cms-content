@@ -675,7 +675,6 @@
 .theme-green.select-beautiful .select-beautiful--search---list--items---option.active{border:1px solid #28a745;color:#222}
 .theme-green.select-beautiful .select-beautiful--search---list--items---option:hover{outline:#28a745}
 .theme-green.select-beautiful .select-beautiful--search---list--items---option[aria-selected=true]{background-color:#d6f5df;color:#222}
-.collapse{visibility:collapse}
 .m-0{margin:0px}
 .m-1{margin:0.25rem}
 .m-3{margin:0.75rem}
@@ -683,9 +682,7 @@
 .mb-10{margin-bottom:2.5rem}
 .mb-2{margin-bottom:0.5rem}
 .mb-4{margin-bottom:1rem}
-.me-auto{-webkit-margin-end:auto;margin-inline-end:auto}
 .mt-1{margin-top:0.25rem}
-.mt-2{margin-top:0.5rem}
 .mt-3{margin-top:0.75rem}
 .grid{display:grid}
 .contents{display:contents}
@@ -693,11 +690,9 @@
 .cursor-pointer{cursor:pointer}
 .list-none{list-style-type:none}
 .grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}
-.content-center{-ms-flex-line-pack:center;align-content:center}
 .justify-items-center{justify-items:center}
 .gap-8{gap:2rem}
 .space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}
-.justify-self-end{justify-self:end}
 .rounded-lg{border-radius:0.5rem}
 .border{border-width:1px}
 .border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}
@@ -724,7 +719,6 @@
 .text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}
 .text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}
 .underline{text-decoration-line:underline}
-.no-underline{text-decoration-line:none}
 .opacity-75{opacity:0.75}
 .shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);-webkit-box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}
 .blur{--tw-blur:blur(8px);-webkit-filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}

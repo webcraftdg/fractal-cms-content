@@ -26,7 +26,7 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
         $classes[] = 'border-primary';
     }
 
-    echo Html::beginTag('div', ['class' => implode(' ', $classes), 'cms-list-line' => $model->id]);
+    echo Html::beginTag('div', ['class' => implode(' ', $classes), 'fractal-cms-core-list-line' => $model->id]);
     $deep = $model->getLevel();
     $className = [];
     $className[] = 'col-sm-6';
