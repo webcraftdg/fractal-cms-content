@@ -1,0 +1,171 @@
+<?php
+/**
+ * Elastic.php
+ *
+ * PHP Version 8.2+
+ *
+ * @author David Ghyse <davidg@webcraftdg.fr>
+ * @version XXX
+ * @package fractalCms\content\traits
+ */
+namespace fractalCms\content\traits;
+
+use Exception;
+use fractalCms\content\models\ElasticModel;
+use fractalCms\content\Module;
+use Yii;
+use yii\helpers\ArrayHelper;
+
+trait Elastic
+{
+    use Upload;
+    public ?ElasticModel $elasticModel = null;
+
+
+    /**
+     * Get attribute
+     *
+     * @param $name
+     * @return mixed|null
+     * @throws \yii\base\UnknownPropertyException
+     */
+    public function __get($name)
+    {
+        try {
+            if ($this->elasticModel instanceof  ElasticModel && $this->elasticModel->hasAttribute($name)) {
+                return $this->elasticModel->__get($name);
+            }
+            return parent::__get($name);
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+
+    /**
+     * Set Attribute
+     *
+     * @param $name
+     * @param $value
+     * @return void
+     * @throws \yii\base\UnknownPropertyException
+     */
+    public function __set($name, $value)
+    {
+        try {
+            if ($this->elasticModel instanceof  ElasticModel && $this->elasticModel->hasAttribute($name)) {
+                $this->elasticModel->__set($name, $value);
+            } else {
+                parent::__set($name, $value);
+            }
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+    /**
+     * Set Attribute
+     *
+     * @param $attribute
+     * @param $value
+     * @return void
+     * @throws \yii\base\UnknownPropertyException
+     */
+    public function setAttribute($attribute, $value)
+    {
+        try {
+            if ($this->elasticModel instanceof  ElasticModel && $this->elasticModel->hasAttribute($attribute)) {
+                $this->elasticModel->__set($attribute, $value);
+            } else {
+                parent::__set($attribute, $value);
+            }
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+    /**
+     * Return attributes
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function attributes()
+    {
+        try {
+            $attributes = parent::attributes();
+            $elasticAttributes = [];
+            if ($this->elasticModel instanceof ElasticModel) {
+                $elasticAttributes = array_keys($this->elasticModel->config);
+            }
+            return ArrayHelper::merge($attributes, $elasticAttributes);
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+    /**
+     * Return safe attributes
+     *
+     * @return array
+     * @throws Exception
+     */
+    public function safeAttributes()
+    {
+        try {
+            return $this->attributes();
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+    /**
+     * Prepare Data before save
+     *
+     * @param $data
+     * @param $deleteSource
+     * @return array
+     * @throws Exception
+     */
+    public function prepareData($data, $deleteSource = true) : array
+    {
+        try {
+            $dataFile = Module::getInstance()->filePath;
+            $relativeDirName = Module::getInstance()->relativeItemImgDirName;
+            if($this->elasticModel !== null && is_array($this->elasticModel->filesAttributes) === true) {
+                foreach ($this->elasticModel->filesAttributes as $attribute => $options) {
+                    if (key_exists($attribute, $data) === true && empty($data[$attribute]) === false) {
+                        $data[$attribute] = $this->saveFile($dataFile, $relativeDirName, $data[$attribute], $deleteSource);
+                    }
+                }
+            }
+            return $data;
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+
+    /**
+     * Delete old file directory
+     *
+     * @return void
+     * @throws Exception
+     */
+    public function deleteFilesDir() : void
+    {
+        try {
+            $dataFile = Module::getInstance()->filePath;
+            $relativeDirName = Module::getInstance()->relativeItemImgDirName;
+            $this->deleteDir($dataFile, $relativeDirName);
+        } catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw $e;
+        }
+    }
+}
