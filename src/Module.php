@@ -163,7 +163,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 }
                 $configuration['children'][] = [
                     'title' => 'Configuration article',
-                    'url' => Url::to(['config-type/index']),
+                    'url' => Url::to(['/'.$this->contextId.'/config-type/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
@@ -178,7 +178,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 }
                 $configuration['children'][] = [
                     'title' => 'Configuration élément',
-                    'url' => Url::to(['config-item/index']),
+                    'url' => Url::to(['/'.$this->contextId.'/config-item/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
@@ -195,7 +195,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
 
                 $contents['children'][] = [
                     'title' => 'Articles',
-                    'url' => Url::to(['content/index']),
+                    'url' => Url::to(['/'.$this->contextId.'/content/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
@@ -210,7 +210,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 }
                 $contents['children'][] = [
                     'title' => 'Menu',
-                    'url' => Url::to(['menu/index']),
+                    'url' => Url::to(['/'.$this->contextId.'/menu/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
@@ -226,7 +226,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 }
                 $contents['children'][] = [
                     'title' => 'Etiquettes (Tags)',
-                    'url' => Url::to(['tag/index']),
+                    'url' => Url::to(['/'.$this->contextId.'/tag/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
