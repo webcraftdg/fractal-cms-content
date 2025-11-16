@@ -13,7 +13,6 @@ namespace fractalCms\content;
 
 
 use Exception;
-use fractalCms\content\assets\WebpackAsset;
 use fractalCms\content\components\UrlRule;
 use fractalCms\content\helpers\ConfigType;
 use fractalCms\content\helpers\MenuItemBuilder;
@@ -43,7 +42,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public string $name = 'FractalCMS';
     public string $commandNameSpace = 'fractalCms\content:';
 
-    private string $contextId = 'cms';
+    private string $contextId = 'fractal-cms-content';
     public function bootstrap($app)
     {
         try {
@@ -129,15 +128,12 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public function getPermissions(): array
     {
         return [
-            Constant::PERMISSION_MAIN_CONTENT,
-            Constant::PERMISSION_MAIN_ITEM,
-            Constant::PERMISSION_MAIN_TAG,
-            Constant::PERMISSION_MAIN_MENU,
-            Constant::PERMISSION_MAIN_CONTENT_ITEM,
-            Constant::PERMISSION_MAIN_TAG_ITEM,
-            Constant::PERMISSION_MAIN_CONTENT_TAG,
-            Constant::PERMISSION_MAIN_CONFIG_TYPE,
-            Constant::PERMISSION_MAIN_CONFIG_ITEM,
+            Constant::PERMISSION_MAIN_CONTENT => 'Article',
+            Constant::PERMISSION_MAIN_ITEM => 'Elément',
+            Constant::PERMISSION_MAIN_TAG => 'Tag (étiquette)',
+            Constant::PERMISSION_MAIN_MENU => 'Menu',
+            Constant::PERMISSION_MAIN_CONFIG_TYPE => 'Configuration article',
+            Constant::PERMISSION_MAIN_CONFIG_ITEM => 'Configuration élément',
         ];
     }
 
@@ -153,12 +149,6 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
             ];
             $contents = [
                 'title' => 'Contenus',
-                'url' => null,
-                'optionsClass' => [],
-                'children' => []
-            ];
-            $admins = [
-                'title' => 'Administration',
                 'url' => null,
                 'optionsClass' => [],
                 'children' => []
@@ -242,9 +232,6 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 ];
             }
             $data = [];
-            if (empty($admins['children']) === false) {
-                $data[] = $admins;
-            }
             if (empty($configuration['children']) === false) {
                 $data[] = $configuration;
             }
@@ -266,86 +253,108 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public function getRoutes(): array
     {
         return [
+                'configuration-des-items/liste' => $this->contextId.'/config-item/index',
+                'configuration-des-items/creer' => $this->contextId.'/config-item/create',
+                'configuration-des-items/<id:([^/]+)>/editer' => $this->contextId.'/config-item/update',
+                'configuration-des-items/<id:([^/]+)>/supprimer' => $this->contextId.'/api/config-item/delete',
+                'configuration-type-article/liste'=> $this->contextId.'/config-type/index',
+                'configuration-type-article/creer' => $this->contextId.'/config-type/create',
+                'configuration-type-article/<id:([^/]+)>/editer'=> $this->contextId.'/config-type/update',
+                'configuration-type-article/<id:([^/]+)>/supprimer' => $this->contextId.'/api/config-type/delete',
+                'articles/liste' => $this->contextId.'/content/index',
+                'articles/creer'=> $this->contextId.'/content/create',
+                'articles/<id:([^/]+)>/editer'=> $this->contextId.'/content/update',
+                'articles/<id:([^/]+)>/supprimer'=> $this->contextId.'/api/content/delete',
+                'menus/liste'=> $this->contextId.'/menu/index',
+                'menu/creer'=> $this->contextId.'/menu/create',
+                'menu/<id:([^/]+)>/editer' => $this->contextId.'/menu/update',
+                'menu/<id:([^/]+)>/supprimer'=> $this->contextId.'/api/menu/delete',
+                'menu/<id:([^/]+)>/manage-menu-items'=> $this->contextId.'/api/menu/manage-menu-items',
+                'contents/<targetId:([^/]+)>/manage-items'=> $this->contextId.'/api/content/manage-items',
+                'tags/<targetId:([^/]+)>/manage-items'=> $this->contextId.'/api/tag/manage-items',
+        ];
+/*
+        return [
             [
                 'pattern' => 'configuration-des-items/liste',
-                'route' => 'config-item/index',
+                'route' => $this->contextId.'/config-item/index',
             ],
             [
                 'pattern' => 'configuration-des-items/creer',
-                'route' => 'config-item/create',
+                'route' => $this->contextId.'/config-item/create',
             ],
             [
                 'pattern' => 'configuration-des-items/<id:([^/]+)>/editer',
-                'route' => 'config-item/update',
+                'route' => $this->contextId.'/config-item/update',
             ],
             [
                 'pattern' => 'configuration-des-items/<id:([^/]+)>/supprimer',
-                'route' => 'api/config-item/delete',
+                'route' => $this->contextId.'/api/config-item/delete',
             ],
 
             [
                 'pattern' => 'configuration-type-article/liste',
-                'route' => 'config-type/index',
+                'route' => $this->contextId.'/config-type/index',
             ],
             [
                 'pattern' => 'configuration-type-article/creer',
-                'route' => 'config-type/create',
+                'route' => $this->contextId.'/config-type/create',
             ],
             [
                 'pattern' => 'configuration-type-article/<id:([^/]+)>/editer',
-                'route' => 'config-type/update',
+                'route' => $this->contextId.'/config-type/update',
             ],
             [
                 'pattern' => 'configuration-type-article/<id:([^/]+)>/supprimer',
-                'route' => 'api/config-type/delete',
+                'route' => $this->contextId.'/api/config-type/delete',
             ],
             [
                 'pattern' => 'articles/liste',
-                'route' => 'content/index',
+                'route' => $this->contextId.'/content/index',
             ],
             [
                 'pattern' => 'articles/creer',
-                'route' => 'content/create',
+                'route' => $this->contextId.'/content/create',
             ],
             [
                 'pattern' => 'articles/<id:([^/]+)>/editer',
-                'route' => 'content/update',
+                'route' => $this->contextId.'/content/update',
             ],
             [
                 'pattern' => 'articles/<id:([^/]+)>/supprimer',
-                'route' => 'api/content/delete',
+                'route' => $this->contextId.'/api/content/delete',
             ],
 
             [
                 'pattern' => 'menus/liste',
-                'route' => 'menu/index',
+                'route' => $this->contextId.'/menu/index',
             ],
             [
                 'pattern' => 'menu/creer',
-                'route' => 'menu/create',
+                'route' => $this->contextId.'/menu/create',
             ],
             [
                 'pattern' => 'menu/<id:([^/]+)>/editer',
-                'route' => 'menu/update',
+                'route' => $this->contextId.'/menu/update',
             ],
             [
                 'pattern' => 'menu/<id:([^/]+)>/supprimer',
-                'route' => 'api/menu/delete',
+                'route' => $this->contextId.'/api/menu/delete',
             ],
             [
                 'pattern' => 'menu/<id:([^/]+)>/manage-menu-items',
-                'route' => 'api/menu/manage-menu-items',
+                'route' => $this->contextId.'/api/menu/manage-menu-items',
             ],
             [
                 'pattern' => 'contents/<targetId:([^/]+)>/manage-items',
-                'route' => 'api/content/manage-items',
+                'route' => $this->contextId.'/api/content/manage-items',
             ],
 
             [
                 'pattern' => 'tags/<targetId:([^/]+)>/manage-items',
-                'route' => 'api/tag/manage-items',
+                'route' => $this->contextId.'/api/tag/manage-items',
             ],
-        ];
+        ];*/
     }
 
     /**
@@ -358,6 +367,23 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     {
         try {
             return $this->contextId;
+        }catch (Exception $e) {
+            Yii::error($e->getMessage(), __METHOD__);
+            throw  $e;
+        }
+    }
+
+    /**
+     * Set context id
+     *
+     * @param $id
+     * @return void
+     * @throws Exception
+     */
+    public function setContextId($id) : void
+    {
+        try {
+            $this->contextId = $id;
         }catch (Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);
             throw  $e;
