@@ -13,6 +13,7 @@ namespace fractalCms\content\controllers;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\helpers\Cms;
 use fractalCms\content\models\ConfigType;
 use fractalCms\content\models\Content;
@@ -21,11 +22,10 @@ use fractalCms\content\models\Slug;
 use fractalCms\content\models\Tag;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class ContentController extends Controller
+class ContentController extends BaseAdminController
 {
 
     /**
@@ -41,7 +41,7 @@ class ContentController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['index'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_LIST],
+                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_LIST],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -49,7 +49,7 @@ class ContentController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['create'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_CREATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_CREATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -57,7 +57,7 @@ class ContentController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['update'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_UPDATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }

@@ -13,16 +13,15 @@ namespace fractalCms\content\controllers;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\helpers\MenuItemBuilder;
-use fractalCms\content\models\Content;
 use fractalCms\content\models\Menu;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class MenuController extends Controller
+class MenuController extends BaseAdminController
 {
 
     protected MenuItemBuilder $menuItemBuilder;
@@ -40,7 +39,7 @@ class MenuController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['index', 'update', 'create'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_LIST],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_LIST],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -48,7 +47,7 @@ class MenuController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['create'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_CREATE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_CREATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -56,7 +55,7 @@ class MenuController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['update'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }

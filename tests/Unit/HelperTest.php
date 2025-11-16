@@ -4,7 +4,7 @@
 namespace Tests\Unit;
 
 use fractalCms\content\helpers\Cms;
-use fractalCms\content\helpers\Menu;
+use fractalCms\content\models\Menu;
 use fractalCms\content\models\Content;
 use Tests\Support\UnitTester;
 use function PHPUnit\Framework\assertEquals;
@@ -43,18 +43,14 @@ class HelperTest extends \Codeception\Test\Unit
         $this->assertEquals(1, $this->count($forms));
         $routes = Cms::getInternCmsRoutes();
         $this->assertEmpty($routes);
-        $menu = \fractalCms\models\Menu::find()->where(['name' => 'header'])->one();
+        $menu = Menu::find()->where(['name' => 'header'])->one();
         $this->assertNotNull($menu);
         $menuStruct = Cms::getMenuItemStructure($menu->id);
         $this->assertNotEmpty($menuStruct);
         $configItems = Cms::getConfigItems();
         $this->assertNotEmpty($configItems);
-        $parameter = Cms::getParameter('CONTENT', 'MAIN');
-        $this->assertEquals(1, $parameter);
         $html = '<p>truc&nbsp;machin</p><p>&nbsp;&nbsp;</p><p><br/><br></p>';
         $newHtml = Cms::cleanHtml($html);
         $this->assertEquals('<p>truc&nbsp;machin</p>', $newHtml);
-
-
     }
 }

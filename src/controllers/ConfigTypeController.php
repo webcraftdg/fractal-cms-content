@@ -12,16 +12,15 @@
 namespace fractalCms\content\controllers;
 
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\ConfigType;
-use fractalCms\content\models\User;
 use fractalCms\content\helpers\ConfigType as ConfigTypeHelpers;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use Exception;
 use Yii;
 use yii\web\Response;
 
-class ConfigTypeController extends Controller
+class ConfigTypeController extends BaseAdminController
 {
 
 
@@ -38,7 +37,7 @@ class ConfigTypeController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['index'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_LIST],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_LIST],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -46,7 +45,7 @@ class ConfigTypeController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['create'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_CREATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_CREATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -54,7 +53,7 @@ class ConfigTypeController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['update'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_UPDATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }

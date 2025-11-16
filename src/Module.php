@@ -15,18 +15,17 @@ namespace fractalCms\content;
 use Exception;
 use fractalCms\content\assets\WebpackAsset;
 use fractalCms\content\components\UrlRule;
-use fractalCms\content\helpers\Menu;
 use fractalCms\content\helpers\ConfigType;
 use fractalCms\content\helpers\MenuItemBuilder;
 use fractalCms\content\helpers\SitemapBuilder;
 use fractalCms\content\console\InitController;
-use fractalCms\core\components\Constant;
+use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\console\Application as ConsoleApplication;
 use yii\helpers\Url;
 use yii\web\Application as WebApplication;
-use yii\web\GroupUrlRule;
 use fractalCms\core\interfaces\FractalCmsCoreInterface;
 class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsCoreInterface
 {
@@ -50,20 +49,15 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
         try {
             Yii::setAlias('@fractalCms/content', __DIR__);
 
-            Yii::$container->setSingleton(Menu::class, [
-                'class' => Menu::class,
-            ]);
             Yii::$container->setSingleton(MenuItemBuilder::class, [
                 'class' => MenuItemBuilder::class,
             ]);
             Yii::$container->setSingleton(ConfigType::class, [
                 'class' => ConfigType::class,
             ]);
-
             Yii::$container->setSingleton(SitemapBuilder::class, [
                 'class' => SitemapBuilder::class,
             ]);
-
             if ($app instanceof ConsoleApplication) {
                 $this->configConsoleApp($app);
             } elseif ($app instanceof WebApplication) {
@@ -85,8 +79,6 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public function configWebApp(WebApplication $app) : void
     {
         try {
-            //Add rules to create an parse cms url
-            WebpackAsset::register($app->view);
             $app->urlManager->addRules([
                 [
                     'class' => UrlRule::class,
@@ -137,8 +129,15 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public function getPermissions(): array
     {
         return [
-            Constant::PERMISSION_MAIN_USER,
-            Constant::PERMISSION_MAIN_PARAMETER,
+            Constant::PERMISSION_MAIN_CONTENT,
+            Constant::PERMISSION_MAIN_ITEM,
+            Constant::PERMISSION_MAIN_TAG,
+            Constant::PERMISSION_MAIN_MENU,
+            Constant::PERMISSION_MAIN_CONTENT_ITEM,
+            Constant::PERMISSION_MAIN_TAG_ITEM,
+            Constant::PERMISSION_MAIN_CONTENT_TAG,
+            Constant::PERMISSION_MAIN_CONFIG_TYPE,
+            Constant::PERMISSION_MAIN_CONFIG_ITEM,
         ];
     }
 
@@ -152,39 +151,92 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 'optionsClass' => [],
                 'children' => []
             ];
+            $contents = [
+                'title' => 'Contenus',
+                'url' => null,
+                'optionsClass' => [],
+                'children' => []
+            ];
             $admins = [
                 'title' => 'Administration',
                 'url' => null,
                 'optionsClass' => [],
                 'children' => []
             ];
-            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_USER.Constant::PERMISSION_ACTION_LIST) === true) {
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_LIST) === true) {
                 $optionsClass = [];
-                if (Yii::$app->controller->id == 'user') {
-                    $optionsClass[] = 'text-primary fw-bold';
-                }
-                if(empty($admins['optionsClass']) === true) {
-                    $admins['optionsClass'] = $optionsClass;
-                }
-                $admins['children'][] =  [
-                    'title' => 'Utilisateurs',
-                    'url' => Url::to(['user/index']),
-                    'optionsClass' => $optionsClass,
-                    'children' => [],
-                ];
-
-            }
-            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_PARAMETER.Constant::PERMISSION_ACTION_LIST) === true) {
-                $optionsClass = [];
-                if (Yii::$app->controller->id == 'parameter') {
+                if (Yii::$app->controller->id == 'config-type') {
                     $optionsClass[] = 'text-primary fw-bold';
                 }
                 if(empty($configuration['optionsClass']) === true) {
                     $configuration['optionsClass'] = $optionsClass;
                 }
                 $configuration['children'][] = [
-                    'title' => 'Paramètres',
-                    'url' => Url::to(['parameter/index']),
+                    'title' => 'Configuration article',
+                    'url' => Url::to(['config-type/index']),
+                    'optionsClass' => $optionsClass,
+                    'children' => [],
+                ];
+            }
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_LIST) === true) {
+                $optionsClass = [];
+                if (Yii::$app->controller->id == 'config-item') {
+                    $optionsClass[] = 'text-primary fw-bold';
+                }
+                if(empty($configuration['optionsClass']) === true) {
+                    $configuration['optionsClass'] = $optionsClass;
+                }
+                $configuration['children'][] = [
+                    'title' => 'Configuration élément',
+                    'url' => Url::to(['config-item/index']),
+                    'optionsClass' => $optionsClass,
+                    'children' => [],
+                ];
+            }
+
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_LIST) === true) {
+                $optionsClass = [];
+                if (Yii::$app->controller->id == 'content') {
+                    $optionsClass[] = 'text-primary fw-bold';
+                }
+                if(empty($contents['optionsClass']) === true) {
+                    $contents['optionsClass'] = $optionsClass;
+                }
+
+                $contents['children'][] = [
+                    'title' => 'Articles',
+                    'url' => Url::to(['content/index']),
+                    'optionsClass' => $optionsClass,
+                    'children' => [],
+                ];
+            }
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_LIST) === true) {
+                $optionsClass = [];
+                if (Yii::$app->controller->id == 'menu') {
+                    $optionsClass[] = 'text-primary fw-bold';
+                }
+                if(empty($contents['optionsClass']) === true) {
+                    $contents['optionsClass'] = $optionsClass;
+                }
+                $contents['children'][] = [
+                    'title' => 'Menu',
+                    'url' => Url::to(['menu/index']),
+                    'optionsClass' => $optionsClass,
+                    'children' => [],
+                ];
+            }
+
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_TAG.CoreConstant::PERMISSION_ACTION_LIST) === true) {
+                $optionsClass = [];
+                if (Yii::$app->controller->id == 'tag') {
+                    $optionsClass[] = 'text-primary fw-bold';
+                }
+                if(empty($contents['optionsClass']) === true) {
+                    $contents['optionsClass'] = $optionsClass;
+                }
+                $contents['children'][] = [
+                    'title' => 'Etiquettes (Tags)',
+                    'url' => Url::to(['tag/index']),
                     'optionsClass' => $optionsClass,
                     'children' => [],
                 ];
@@ -195,6 +247,9 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
             }
             if (empty($configuration['children']) === false) {
                 $data[] = $configuration;
+            }
+            if (empty($contents['children']) === false) {
+                $data[] = $contents;
             }
             return $data;
         } catch (Exception $e) {
@@ -281,23 +336,6 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
                 'pattern' => 'menu/<id:([^/]+)>/manage-menu-items',
                 'route' => 'api/menu/manage-menu-items',
             ],
-            [
-                'pattern' => 'parametres/liste',
-                'route' => 'parameter/index',
-            ],
-            [
-                'pattern' => 'parametres/creer',
-                'route' => 'parameter/create',
-            ],
-            [
-                'pattern' => 'parametres/<id:([^/]+)>/editer',
-                'route' => 'parameter/update',
-            ],
-            [
-                'pattern' => 'parametres/<id:([^/]+)>/supprimer',
-                'route' => 'api/parameter/delete',
-            ],
-
             [
                 'pattern' => 'contents/<targetId:([^/]+)>/manage-items',
                 'route' => 'api/content/manage-items',

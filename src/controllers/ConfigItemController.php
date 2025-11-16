@@ -12,14 +12,14 @@
 namespace fractalCms\content\controllers;
 
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\ConfigItem;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use Exception;
 use Yii;
 use yii\web\Response;
 
-class ConfigItemController extends Controller
+class ConfigItemController extends BaseAdminController
 {
 
 
@@ -36,7 +36,7 @@ class ConfigItemController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['index'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_LIST],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_LIST],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -44,7 +44,7 @@ class ConfigItemController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['create'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_CREATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_CREATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -52,7 +52,7 @@ class ConfigItemController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['update'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_UPDATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }

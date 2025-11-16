@@ -13,6 +13,7 @@ use yii\db\Connection;
 use yii\caching\DummyCache;
 use yii\log\FileTarget;
 use yii\caching\CacheInterface;
+use fractalCms\core\Module as FractalCmsCoreModule;
 use fractalCms\content\Module as FractalCmsContentModule;
 $config = [
     'id' => 'dghyse/fractal-cms',
@@ -50,10 +51,14 @@ $config = [
     ],
     'bootstrap' => [
         'log',
-        'fractal-cms'
+        'fractal-cms',
+        'fractal-cms-content',
     ],
     'modules' => [
         'fractal-cms' => [
+            'class' => FractalCmsCoreModule::class,
+        ],
+        'fractal-cms-content' => [
             'class' => FractalCmsContentModule::class,
             'viewItemPath'=> '@webapp/views/fractal-cms'
         ]
@@ -92,5 +97,5 @@ $config = [
     'params' => [
     ],
 ];
-$config['controllerNamespace'] = 'fractalCms\controllers';
+$config['controllerNamespace'] = 'fractalCms\content\controllers';
 return $config;

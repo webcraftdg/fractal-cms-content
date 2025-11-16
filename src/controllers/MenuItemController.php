@@ -13,16 +13,16 @@ namespace fractalCms\content\controllers;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\helpers\Cms;
 use fractalCms\content\models\Menu;
 use fractalCms\content\models\MenuItem;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class MenuItemController extends Controller
+class MenuItemController extends BaseAdminController
 {
 
     /**
@@ -38,7 +38,7 @@ class MenuItemController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['create'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_CREATE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_CREATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
@@ -46,7 +46,7 @@ class MenuItemController extends Controller
                 [
                     'allow' => true,
                     'actions' => ['update'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE],
                     'denyCallback' => function ($rule, $action) {
                         return $this->redirect(['default/index']);
                     }
