@@ -13,6 +13,7 @@
  * @var array $structure
  */
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -25,7 +26,7 @@ use yii\helpers\Url;
 <div class="row mt-3">
     <div class="col" >
         <?php
-        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_CREATE) === true):
+        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_CREATE) === true):
 
         echo Html::beginTag('a', ['href' => Url::to(['content/create']), 'class' => 'btn btn-outline-success']);
         ?>

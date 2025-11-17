@@ -8,13 +8,16 @@
  * @package webapp\views\layouts
  *
  * @var $this yii\web\View
- * @var $model \fractalCms\content\models\Item
- * @var $target \fractalCms\content\models\Content | \fractalCms\content\models\Tag
+ * @var $model Item
+ * @var $target Content | Tag
  */
 
 use fractalCms\content\helpers\Html;
 use yii\helpers\ArrayHelper;
 use fractalCms\content\helpers\Cms;
+use fractalCms\content\models\Tag;
+use fractalCms\content\models\Content;
+use fractalCms\content\models\Item;
 ?>
 <?php
 //for each attribute
@@ -34,7 +37,7 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
                 break;
             case Html::CONFIG_TYPE_FILE:
             case Html::CONFIG_TYPE_FILES:
-                echo Html::tag('cms-file-upload', '', [
+                echo Html::tag('fractal-cms-content-file-upload', '', [
                     'title.bind' => '\''.$title.'\'',
                     'name' => Html::getInputName($target, 'items['.$model->id.']['.$attribute.']'),
                     'value' => $model->$attribute,
@@ -62,7 +65,7 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
                 $inputNameId = Html::getInputId($target, 'items['.$model->id.']['.$attribute.']');
                 echo Html::tag('div', '',
                     [
-                        'cms-wysiwyg-editor' => 'input-id.bind:\''.$inputNameId.'\'',
+                        'fractal-cms-content-wysiwyg-editor' => 'input-id.bind:\''.$inputNameId.'\'',
                     ]);
                 break;
             case Html::CONFIG_TYPE_CHECKBOX:

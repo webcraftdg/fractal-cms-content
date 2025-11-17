@@ -9,9 +9,9 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\content\models\Content $model
+ * @var \fractalCms\content\components\Constant $model
  * @var array $routes
- * @var \fractalCms\content\content\models\ConfigType[] $configTypes
+ * @var \fractalCms\content\models\ConfigType[] $configTypes
  * @var array $sections
  * @var array $configItems
  * @var \yii\redis\ActiveQuery $itemsQuery
@@ -115,7 +115,7 @@ use yii\helpers\ArrayHelper;
                         [
                             'class' => 'cad-body',
                         ]);
-                    echo Html::tag('fractalcms-content-manage-items', '',
+                    echo Html::tag('fractal-cms-content-manage-items', '',
                         [
                             'id.bind' => $model->id,
                             'item-api-url' => '/contents/{targetId}/manage-items',

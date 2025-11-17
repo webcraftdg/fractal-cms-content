@@ -4,7 +4,7 @@ import {IMenuItem, IMoveMenuItem} from "../interfaces/menu-item";
 import {EEvents} from "../enums/events";
 import {EMenuItemAction} from "../enums/menu";
 
-@customAttribute('cms-menu-item-list')
+@customAttribute('fractal-cms-content-menu-item-list')
 export class MenuItemList {
 
     private items:NodeListOf<HTMLLIElement>;

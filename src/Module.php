@@ -25,6 +25,7 @@ use yii\base\BootstrapInterface;
 use yii\console\Application as ConsoleApplication;
 use yii\helpers\Url;
 use yii\web\Application as WebApplication;
+use fractalCms\core\Module as CoreModule;
 use fractalCms\core\interfaces\FractalCmsCoreInterface;
 class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsCoreInterface
 {
@@ -252,109 +253,33 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
      */
     public function getRoutes(): array
     {
+        $coreId = CoreModule::getInstance()->id;
+        $contextId = $this->contextId;
         return [
-                'configuration-des-items/liste' => $this->contextId.'/config-item/index',
-                'configuration-des-items/creer' => $this->contextId.'/config-item/create',
-                'configuration-des-items/<id:([^/]+)>/editer' => $this->contextId.'/config-item/update',
-                'configuration-des-items/<id:([^/]+)>/supprimer' => $this->contextId.'/api/config-item/delete',
-                'configuration-type-article/liste'=> $this->contextId.'/config-type/index',
-                'configuration-type-article/creer' => $this->contextId.'/config-type/create',
-                'configuration-type-article/<id:([^/]+)>/editer'=> $this->contextId.'/config-type/update',
-                'configuration-type-article/<id:([^/]+)>/supprimer' => $this->contextId.'/api/config-type/delete',
-                'articles/liste' => $this->contextId.'/content/index',
-                'articles/creer'=> $this->contextId.'/content/create',
-                'articles/<id:([^/]+)>/editer'=> $this->contextId.'/content/update',
-                'articles/<id:([^/]+)>/supprimer'=> $this->contextId.'/api/content/delete',
-                'menus/liste'=> $this->contextId.'/menu/index',
-                'menu/creer'=> $this->contextId.'/menu/create',
-                'menu/<id:([^/]+)>/editer' => $this->contextId.'/menu/update',
-                'menu/<id:([^/]+)>/supprimer'=> $this->contextId.'/api/menu/delete',
-                'menu/<id:([^/]+)>/manage-menu-items'=> $this->contextId.'/api/menu/manage-menu-items',
-                'contents/<targetId:([^/]+)>/manage-items'=> $this->contextId.'/api/content/manage-items',
-                'tags/<targetId:([^/]+)>/manage-items'=> $this->contextId.'/api/tag/manage-items',
+            $coreId.'/configuration-des-items/liste' => $contextId.'/config-item/index',
+            $coreId.'/configuration-des-items/creer' => $contextId.'/config-item/create',
+            $coreId.'/configuration-des-items/<id:([^/]+)>/editer' => $contextId.'/config-item/update',
+            $coreId.'/configuration-des-items/<id:([^/]+)>/supprimer' => $contextId.'/api/config-item/delete',
+            $coreId.'/configuration-type-article/liste'=> $contextId.'/config-type/index',
+            $coreId.'/configuration-type-article/creer' => $contextId.'/config-type/create',
+            $coreId.'/configuration-type-article/<id:([^/]+)>/editer'=> $contextId.'/config-type/update',
+            $coreId.'/configuration-type-article/<id:([^/]+)>/supprimer' => $contextId.'/api/config-type/delete',
+            $coreId.'/articles/liste' => $contextId.'/content/index',
+            $coreId.'/articles/creer'=> $contextId.'/content/create',
+            $coreId.'/articles/<id:([^/]+)>/editer'=> $contextId.'/content/update',
+            $coreId.'/articles/<id:([^/]+)>/supprimer'=> $contextId.'/api/content/delete',
+            $coreId.'/tags/liste' => $contextId.'/tag/index',
+            $coreId.'/tags/creer'=> $contextId.'/tag/create',
+            $coreId.'/tags/<id:([^/]+)>/editer'=> $contextId.'/tag/update',
+            $coreId.'/tags/<id:([^/]+)>/supprimer'=> $contextId.'/api/tag/delete',
+            $coreId.'/menus/liste'=> $contextId.'/menu/index',
+            $coreId.'/menu/creer'=> $contextId.'/menu/create',
+            $coreId.'/menu/<id:([^/]+)>/editer' => $contextId.'/menu/update',
+            $coreId.'/menu/<id:([^/]+)>/supprimer'=> $contextId.'/api/menu/delete',
+            $coreId.'/menu/<id:([^/]+)>/manage-menu-items'=> $contextId.'/api/menu/manage-menu-items',
+            $coreId.'/contents/<targetId:([^/]+)>/manage-items'=> $contextId.'/api/content/manage-items',
+            $coreId.'/tags/<targetId:([^/]+)>/manage-items'=> $contextId.'/api/tag/manage-items',
         ];
-/*
-        return [
-            [
-                'pattern' => 'configuration-des-items/liste',
-                'route' => $this->contextId.'/config-item/index',
-            ],
-            [
-                'pattern' => 'configuration-des-items/creer',
-                'route' => $this->contextId.'/config-item/create',
-            ],
-            [
-                'pattern' => 'configuration-des-items/<id:([^/]+)>/editer',
-                'route' => $this->contextId.'/config-item/update',
-            ],
-            [
-                'pattern' => 'configuration-des-items/<id:([^/]+)>/supprimer',
-                'route' => $this->contextId.'/api/config-item/delete',
-            ],
-
-            [
-                'pattern' => 'configuration-type-article/liste',
-                'route' => $this->contextId.'/config-type/index',
-            ],
-            [
-                'pattern' => 'configuration-type-article/creer',
-                'route' => $this->contextId.'/config-type/create',
-            ],
-            [
-                'pattern' => 'configuration-type-article/<id:([^/]+)>/editer',
-                'route' => $this->contextId.'/config-type/update',
-            ],
-            [
-                'pattern' => 'configuration-type-article/<id:([^/]+)>/supprimer',
-                'route' => $this->contextId.'/api/config-type/delete',
-            ],
-            [
-                'pattern' => 'articles/liste',
-                'route' => $this->contextId.'/content/index',
-            ],
-            [
-                'pattern' => 'articles/creer',
-                'route' => $this->contextId.'/content/create',
-            ],
-            [
-                'pattern' => 'articles/<id:([^/]+)>/editer',
-                'route' => $this->contextId.'/content/update',
-            ],
-            [
-                'pattern' => 'articles/<id:([^/]+)>/supprimer',
-                'route' => $this->contextId.'/api/content/delete',
-            ],
-
-            [
-                'pattern' => 'menus/liste',
-                'route' => $this->contextId.'/menu/index',
-            ],
-            [
-                'pattern' => 'menu/creer',
-                'route' => $this->contextId.'/menu/create',
-            ],
-            [
-                'pattern' => 'menu/<id:([^/]+)>/editer',
-                'route' => $this->contextId.'/menu/update',
-            ],
-            [
-                'pattern' => 'menu/<id:([^/]+)>/supprimer',
-                'route' => $this->contextId.'/api/menu/delete',
-            ],
-            [
-                'pattern' => 'menu/<id:([^/]+)>/manage-menu-items',
-                'route' => $this->contextId.'/api/menu/manage-menu-items',
-            ],
-            [
-                'pattern' => 'contents/<targetId:([^/]+)>/manage-items',
-                'route' => $this->contextId.'/api/content/manage-items',
-            ],
-
-            [
-                'pattern' => 'tags/<targetId:([^/]+)>/manage-items',
-                'route' => $this->contextId.'/api/tag/manage-items',
-            ],
-        ];*/
     }
 
     /**

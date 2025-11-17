@@ -10,14 +10,16 @@
  *
  * @var \yii\web\View $this
  * @var \yii\db\ActiveQuery $itemsQuery
- * @var \fractalCms\content\models\Tag $target
+ * @var Tag $target
  * @var array $configItems
  */
 
+use fractalCms\content\models\Tag;
 use fractalCms\content\helpers\Html;
+use fractalCms\content\models\Item;
 use yii\helpers\ArrayHelper;
 
-$model = Yii::createObject(\fractalCms\content\models\Item::class);
+$model = Yii::createObject(Item::class);
 ?>
 
 <div class="row m-3">

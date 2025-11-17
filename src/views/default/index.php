@@ -9,13 +9,14 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\User $model
+ * @var User $model
  * @var $nbSections
  * @var $nbArticles
  * @var $lastDate;
  */
 
 use fractalCms\content\Module;
+use fractalCms\core\models\User;
 
 $moduleInstance = Module::getInstance();
 ?>

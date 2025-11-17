@@ -12,6 +12,7 @@
  * @var \yii\db\ActiveQuery $modelQuery
  */
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -24,7 +25,7 @@ use yii\helpers\Url;
 <div class="row mt-3">
     <div class="col" >
         <?php
-        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_TAG.Constant::PERMISSION_ACTION_CREATE) === true):
+        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_TAG.CoreConstant::PERMISSION_ACTION_CREATE) === true):
 
         echo Html::beginTag('a', ['href' => Url::to(['tag/create']), 'class' => 'btn btn-outline-success']);
         ?>

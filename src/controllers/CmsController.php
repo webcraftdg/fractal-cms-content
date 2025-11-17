@@ -15,7 +15,6 @@ use fractalCms\content\interfaces\ControllerInterface;
 use fractalCms\content\models\Content;
 use fractalCms\content\models\Slug;
 use fractalCms\content\models\Tag;
-use yii\db\ActiveRecord;
 use yii\web\Controller;
 use Exception;
 use Yii;

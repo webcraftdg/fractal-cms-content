@@ -1,7 +1,7 @@
 import {bindable, customElement, IEventAggregator, ILogger, INode, IPlatform, resolve} from 'aurelia';
 import {EEvents} from "../enums/events";
 
-@customElement('cms-alert')
+@customElement('fractal-cms-content-alert')
 
 export class Alert
 {

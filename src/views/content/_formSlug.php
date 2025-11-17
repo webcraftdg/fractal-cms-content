@@ -9,10 +9,10 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\content\models\Slug $slug;
+ * @var \fractalCms\content\models\Slug $slug;
  */
 
-use fractalCms\content\content\helpers\Html;
+use fractalCms\content\helpers\Html;
 use yii\helpers\ArrayHelper;
 ?>
 <div class="card">

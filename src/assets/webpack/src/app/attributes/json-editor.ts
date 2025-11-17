@@ -2,7 +2,7 @@ import {bindable, customAttribute, ILogger, INode, resolve, IPlatform} from "aur
 import {ApiServices} from "../services/api-services";
 import JSONEditor, {JSONEditorOptions} from "jsoneditor";
 
-@customAttribute('cms-json-editor')
+@customAttribute('fractal-cms-content-json-editor')
 export class JsonEditor {
 
     @bindable() fieldSelector: string;

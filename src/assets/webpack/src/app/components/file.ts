@@ -13,7 +13,7 @@ interface UploadedFile {
     deleteUrl:string,
     file?:Resumable.ResumableFile|null
 }
-@customElement('cms-file-upload')
+@customElement('fractal-cms-content-file-upload')
 export class File
 {
     public inProgress:boolean = false;

@@ -1,9 +1,9 @@
-import {customElement, IDisposable, IEventAggregator, ILogger, INode, IPlatform, resolve} from 'aurelia';
+import {customElement, IDisposable, IEventAggregator, ILogger, INode, resolve} from 'aurelia';
 import {ApiServices} from "../services/api-services";
 import {EEvents} from "../enums/events";
 import {IAlertAddMessage, IAlertDeleteMessage} from "../interfaces/alert";
 
-@customElement('cms-manage-alerts')
+@customElement('fractal-cms-content-manage-alerts')
 
 export class ManageAlerts
 {

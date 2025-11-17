@@ -5,7 +5,7 @@ import {EEvents} from "../enums/events";
 import {IAlertAddMessage} from "../interfaces/alert";
 import {getTextAlert} from "../helpers/alert";
 
-@customAttribute('fractalcms-item')
+@customAttribute('fractal-cms-content-item')
 export class Item {
 
     @bindable() id: number;

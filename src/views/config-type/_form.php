@@ -9,12 +9,13 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\ConfigType $model
+ * @var ConfigType $model
  * @var array $routes
  */
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use fractalCms\content\models\ConfigType;
 ?>
 <div class="row">
     <div class="col-sm-12">

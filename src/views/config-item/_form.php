@@ -9,12 +9,12 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\ConfigType $model
+ * @var ConfigItem $model
  * @var array $routes
  */
 
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
+use fractalCms\content\models\ConfigItem;
 ?>
 <div class="row">
     <div class="col-sm-12">
@@ -39,7 +39,7 @@ use yii\helpers\ArrayHelper;
         </div>
         <div class="row  justify-content-center">
             <div class="col form-group p-0">
-                <div cms-json-editor="" class="mt-3">
+                <div fractal-cms-content-json-editor="" class="mt-3">
                     <?php
                     echo Html::activeHiddenInput($model, 'config', ['class' => 'jsonInput']);
                     ?>

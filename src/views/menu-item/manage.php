@@ -9,13 +9,13 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\MenuItem $model
- * @var \fractalCms\content\models\MenuItem[] $menusItems
+ * @var MenuItem $model
+ * @var MenuItem[] $menusItems
  * @var array $contents
  * @var array $routes
  */
-use fractalCms\content\helpers\Html;
-use yii\helpers\Url;
+
+use fractalCms\content\models\MenuItem;
 ?>
 
 <div class="row mt-3 align-items-center">

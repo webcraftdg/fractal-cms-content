@@ -1,8 +1,8 @@
 <?php
 /**
- * CmsController.php
+ * BaseAdminController.php
  *
- * PHP Version 8.2+
+ * PHP Version 8.3+
  *
  * @author David Ghyse <davidg@webcraftdg.fr>
  * @version XXX
@@ -11,13 +11,23 @@
 
 namespace fractalCms\content\controllers;
 
-use fractalCms\content\assets\WebpackAsset;
+use fractalCms\content\behaviors\Assets;
+use fractalCms\core\Module as CoreModule;
 use yii\web\Controller;
 use Exception;
 use Yii;
 
 class BaseAdminController extends Controller
 {
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['assets'] = [
+            'class' => Assets::class
+        ];
+        return $behaviors;
+    }
 
     /**
      * @inheritDoc
@@ -27,7 +37,8 @@ class BaseAdminController extends Controller
     {
         try {
             parent::init();
-            WebpackAsset::register($this->view);
+            $coreModule = CoreModule::getInstance();
+            $this->layout = $coreModule->layoutPath.'/'.$coreModule->layout;
         } catch (Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);
             throw $e;

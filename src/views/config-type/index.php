@@ -11,6 +11,7 @@
  * @var \fractalCms\content\models\ConfigType[] $models
  */
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -23,7 +24,7 @@ use yii\helpers\Url;
 <div class="row mt-3">
     <div class="col" >
         <?php
-        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_CREATE) === true):
+        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_CREATE) === true):
 
         echo Html::beginTag('a', ['href' => Url::to(['config-type/create']), 'class' => 'btn btn-outline-success']);
         ?>
@@ -52,7 +53,7 @@ use yii\helpers\Url;
                  echo Html::tag('div', ucfirst($model->config), ['class' => 'col']);
                  echo Html::beginTag('div', ['class' => 'col-sm-3']);
                  echo Html::beginTag('div', ['class' => 'row align-items-center']);
-                     if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_UPDATE) === true)  {
+                     if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
                          echo Html::beginTag('a', ['href' => Url::to(['config-type/update', 'id' => $model->id]), 'class' => 'icon-link col', 'title' => 'Editer']);
                          ?>
                          <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,7 +63,7 @@ use yii\helpers\Url;
                          <?php
                          echo Html::endTag('a');
                      }
-                        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_DELETE) === true)  {
+                        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_DELETE) === true)  {
                             echo Html::beginTag('a', ['href' => Url::to(['api/config-type/delete', 'id' => $model->id]), 'class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
                             ?>
                             <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

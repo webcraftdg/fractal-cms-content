@@ -8,9 +8,11 @@
  * @version XXX
  * @package views
  *
- * @var \fractalCms\content\models\ConfigItem[] $models
+ * @var ConfigItem[] $models
  */
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
+use fractalCms\content\models\ConfigItem;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -23,7 +25,7 @@ use yii\helpers\Url;
 <div class="row mt-3">
     <div class="col" >
         <?php
-        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_CREATE) === true):
+        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_CREATE) === true):
 
         echo Html::beginTag('a', ['href' => Url::to(['config-item/create']), 'class' => 'btn btn-outline-success']);
         ?>
@@ -42,7 +44,7 @@ use yii\helpers\Url;
 </div>
 <div class="row m-3">
         <?php
-            /** @var \fractalCms\content\models\ConfigType $model */
+            /** @var ConfigItem $model */
             foreach ($models as $model) {
                 $classes = ['row align-items-center  p-1 border mt-1'];
                 $classes[] = 'border-primary';
@@ -50,7 +52,7 @@ use yii\helpers\Url;
                  echo Html::tag('div', '#'.$model->id.' '.ucfirst($model->name), ['class' => 'col']);
                  echo Html::beginTag('div', ['class' => 'col-sm-3']);
                  echo Html::beginTag('div', ['class' => 'row align-items-center']);
-                     if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_UPDATE) === true)  {
+                     if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
                          echo Html::beginTag('a', ['href' => Url::to(['config-item/update', 'id' => $model->id]), 'class' => 'icon-link col', 'title' => 'Editer']);
                          ?>
                          <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +62,7 @@ use yii\helpers\Url;
                          <?php
                          echo Html::endTag('a');
                      }
-                        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_DELETE) === true)  {
+                        if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_DELETE) === true)  {
                             echo Html::beginTag('a', ['href' => Url::to(['api/config-item/delete', 'id' => $model->id]), 'class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
                             ?>
                             <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

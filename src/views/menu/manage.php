@@ -9,10 +9,10 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\Menu $model
+ * @var Menu $model
  * @var string $menuItemHtml
  */
-
+use fractalCms\content\models\Menu;
 ?>
 
 <div class="row mt-3 align-items-center">

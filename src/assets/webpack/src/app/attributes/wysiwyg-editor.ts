@@ -2,8 +2,7 @@ import {bindable, customAttribute, ILogger, INode, resolve, IPlatform} from "aur
 import {ApiServices} from "../services/api-services";
 import Quill, {QuillOptions} from "quill";
 import hljs from 'highlight.js';
-import {Element} from "chart.js";
-@customAttribute('cms-wysiwyg-editor')
+@customAttribute('fractal-cms-content-wysiwyg-editor')
 export class WysiwygEditor {
 
     @bindable() options:QuillOptions = {

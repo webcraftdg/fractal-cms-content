@@ -10,14 +10,14 @@
  *
  * @var \yii\web\View $this
  * @var string $menuItemHtml
- * @var \fractalCms\content\models\Menu $menu
+ * @var Menu $menu
  */
 
 use fractalCms\content\helpers\Html;
-use yii\helpers\ArrayHelper;
+use fractalCms\content\models\Menu;
 ?>
 
-<div class="row m-1" cms-menu-item-list="">
+<div class="row m-1" fractal-cms-content-menu-item-list="">
             <?php
                 echo $this->render('_menu_item_lines', ['menuItemHtml' => $menuItemHtml]);
             ?>

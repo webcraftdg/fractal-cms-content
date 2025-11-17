@@ -9,12 +9,16 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\Menu $menu
- * @var \fractalCms\content\models\MenuItem $model
+ * @var Menu $menu
+ * @var MenuItem $model
  */
 
 use fractalCms\content\helpers\Html;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
+use fractalCms\content\models\Menu;
+use fractalCms\content\models\MenuItem;
+use fractalCms\content\models\Content;
 use yii\helpers\Url;
 ?>
     <?php
@@ -30,9 +34,8 @@ use yii\helpers\Url;
     } else {
         $classMargin = 'p-0';
     }
-    //$className[] = $classMargin;
     $route = $model->route;
-    if ($model->content instanceof \fractalCms\content\models\Content) {
+    if ($model->content instanceof Content) {
         $route = $model->content->getRoute();
     }
     echo Html::tag('div', ucfirst($model->name), ['class' => implode(' ', $className)]);
@@ -40,7 +43,7 @@ use yii\helpers\Url;
 
     echo Html::beginTag('div', ['class' => 'col-sm-3']);
     echo Html::beginTag('div', ['class' => 'row align-items-center']);
-    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_UPDATE) === true)  {
+    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
         echo Html::beginTag('a', ['href' => Url::to(['menu-item/update', 'menuId' => $menu->id, 'id' => $model->id]), 'class' => 'icon-link col', 'title' => 'Editer']);
         ?>
         <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +53,7 @@ use yii\helpers\Url;
         <?php
         echo Html::endTag('a');
     }
-    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_DELETE) === true)  {
+    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_DELETE) === true)  {
         echo Html::beginTag('a', ['href' => Url::to(['api/menu-item/delete', 'id' => $model->id]), 'class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
         ?>
         <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

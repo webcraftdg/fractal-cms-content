@@ -8,10 +8,10 @@
  * @version XXX
  * @package views
  *
- * @var \fractalCms\content\models\ConfigType $model
+ * @var ConfigType $model
  * @var array $routes
  */
-
+use fractalCms\content\models\ConfigType;
 ?>
 <div class="row mt-3 align-items-center">
     <div class="col-sm-6">

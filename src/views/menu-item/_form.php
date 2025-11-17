@@ -9,13 +9,14 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\MenuItem $model
- * @var \fractalCms\content\models\MenuItem[] $menusItems
+ * @var MenuItem $model
+ * @var MenuItem[] $menusItems
  * @var array $contents
  * @var  array $routes
  */
 
 use fractalCms\content\helpers\Html;
+use fractalCms\content\models\MenuItem;
 use yii\helpers\ArrayHelper;
 ?>
 <div class="row">

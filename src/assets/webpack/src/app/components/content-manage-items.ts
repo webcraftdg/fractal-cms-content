@@ -1,4 +1,4 @@
-import {bindable, customElement, IDisposable, IEventAggregator, ILogger, INode, IPlatform, resolve} from 'aurelia';
+import {bindable, customElement, IDisposable, IEventAggregator, ILogger, INode, resolve} from 'aurelia';
 import {ApiServices} from "../services/api-services";
 import {EEvents} from "../enums/events";
 import {IActionEvent} from "../interfaces/events";
@@ -6,7 +6,7 @@ import {IAlertAddMessage} from "../interfaces/alert";
 import {EAlert} from "../enums/alert";
 import {EApi} from "../enums/api";
 
-@customElement('fractalcms-content-manage-items')
+@customElement('fractal-cms-content-manage-items')
 
 export class ContentManageItems
 {

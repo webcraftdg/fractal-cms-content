@@ -12,6 +12,7 @@
  * @var int $parentDeep
  */
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use yii\helpers\Html;
 use yii\helpers\Url;
 $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
@@ -39,7 +40,7 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
     echo Html::tag('div', ucfirst($model->type), ['class' => 'col-sm-3']);
     echo Html::beginTag('div', ['class' => 'col-sm-3']);
     echo Html::beginTag('div', ['class' => 'row align-items-center']);
-    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_UPDATE) === true)  {
+    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
         echo Html::beginTag('a', ['href' => Url::to(['content/update', 'id' => $model->id]), 'class' => 'icon-link col', 'title' => 'Editer']);
         ?>
         <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,8 +50,7 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
         <?php
         echo Html::endTag('a');
     }
-    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_ACTIVATION) === true)  {
-        // echo Html::beginTag('a', ['href' => Url::to(['user/activate', 'id' => $model->id]), 'class' => 'icon-link col user-button-activate', 'title' => ((boolean) $model->active === true) ? 'Désactiver' : 'Activer']);
+    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_ACTIVATION) === true)  {
         echo Html::beginTag('span', ['class' => 'icon-link col']);
         if ((boolean)$model->active === true):
             ?>
@@ -63,9 +63,8 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
         <?php
         endif;
         echo Html::endTag('span');
-        // echo Html::endTag('a');
     }
-    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.Constant::PERMISSION_ACTION_DELETE) === true && $model->pathKey !== '1')  {
+    if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_DELETE) === true && $model->pathKey !== '1')  {
         echo Html::beginTag('a', ['href' => Url::to(['api/content/delete', 'id' => $model->id]), 'class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
         ?>
         <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

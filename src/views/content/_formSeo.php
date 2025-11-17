@@ -9,10 +9,10 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\content\models\Seo $seo;
+ * @var Seo $seo;
  */
 
-use fractalCms\content\content\helpers\Html;
+use fractalCms\content\helpers\Html;
 use fractalCms\content\models\Seo;
 ?>
 <div class="card">
@@ -61,7 +61,7 @@ use fractalCms\content\models\Seo;
         <div class="row">
             <div class="col">
                 <?php
-                echo Html::tag('cms-file-upload', '', [
+                echo Html::tag('fractal-cms-content-file-upload', '', [
                     'title' => 'Image dimensions idéale 1200×630px',
                     'name' => Html::getInputName($seo, 'imgPath'),
                     'value' => $seo->imgPath,

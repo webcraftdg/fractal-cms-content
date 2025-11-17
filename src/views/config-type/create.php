@@ -9,10 +9,10 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\ConfigType $model
+ * @var ConfigType $model
  * @var $routes
  */
-
+use fractalCms\content\models\ConfigType;
 ?>
 
 <div class="row mt-3 align-items-center">

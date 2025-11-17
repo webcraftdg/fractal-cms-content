@@ -9,16 +9,20 @@
  * @package views
  *
  * @var \yii\web\View $this
- * @var \fractalCms\content\models\Content $model
- * @var \fractalCms\content\models\ConfigType $configTypes
+ * @var Content $model
+ * @var ConfigType[] $configTypes
  * @var array $sections
  * @var array $configItems
  * @var \yii\redis\ActiveQuery $itemsQuery
  * @var \yii\redis\ActiveQuery $tagsQuery
- * @var \fractalCms\content\models\Slug $slug
- * @var \fractalCms\content\models\Seo $seo
+ * @var  Slug $slug
+ * @var Seo $seo
  */
 use fractalCms\content\helpers\Html;
+use fractalCms\content\models\Content;
+use fractalCms\content\models\ConfigType;
+use fractalCms\content\models\Slug;
+use fractalCms\content\models\Seo;
 use yii\helpers\Url;
 
 $configItems = ($configItems) ?? [];
@@ -48,11 +52,11 @@ $configItems = ($configItems) ?? [];
                 'model' => $model,
                 'slug' => $slug,
                 'seo' => $seo,
-            'configTypes' => $configTypes,
-            'sections' => $sections,
-            'configItems' => $configItems,
-            'itemsQuery' => $itemsQuery,
-            'tagsQuery' => $tagsQuery,
+                'configTypes' => $configTypes,
+                'sections' => $sections,
+                'configItems' => $configItems,
+                'itemsQuery' => $itemsQuery,
+                'tagsQuery' => $tagsQuery,
         ]);
     ?>
 </div>
