@@ -1,11 +1,11 @@
 import {bindable, customAttribute, ILogger, INode, resolve, IPlatform} from "aurelia";
 import {ApiServices} from "../services/api-services";
-import Quill, {QuillOptions} from "quill";
+import Quill  from "quill";
 import hljs from 'highlight.js';
 @customAttribute('fractal-cms-content-wysiwyg-editor')
 export class WysiwygEditor {
 
-    @bindable() options:QuillOptions = {
+    @bindable() options:any = {
         theme: 'snow',
         placeholder: 'votre texte ici ...',
         modules: {

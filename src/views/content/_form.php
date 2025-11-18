@@ -22,6 +22,7 @@
 
 use fractalCms\content\helpers\Html;
 use yii\helpers\ArrayHelper;
+
 ?>
 <div class="row">
     <div class="col-sm-12">

@@ -4,7 +4,6 @@ import {EEvents} from "../enums/events";
 import {IActionEvent} from "../interfaces/events";
 import {IAlertAddMessage} from "../interfaces/alert";
 import {EAlert} from "../enums/alert";
-import {EApi} from "../enums/api";
 
 @customElement('fractal-cms-content-manage-items')
 

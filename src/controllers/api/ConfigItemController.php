@@ -13,6 +13,7 @@ namespace fractalCms\content\controllers\api;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\ConfigItem;
 use fractalCms\core\controllers\api\BaseController;
 use Yii;
@@ -39,7 +40,7 @@ class ConfigItemController extends BaseController
                     'allow' => true,
                     'actions' => ['delete'],
                     'verbs' => ['delete'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.Constant::PERMISSION_ACTION_DELETE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_ITEM.CoreConstant::PERMISSION_ACTION_DELETE],
                 ],
             ],
             'denyCallback' => function ($rule, $action) {

@@ -24,6 +24,7 @@ use fractalCms\content\models\Seo;
 use yii\helpers\Url;
 
 $configItems = ($configItems) ?? [];
+echo Html::tag('fractal-cms-content-manage-alerts', '');
 ?>
 <div class="row mt-3 align-items-center">
     <div class="col-sm-8">

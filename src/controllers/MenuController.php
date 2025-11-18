@@ -145,6 +145,7 @@ class MenuController extends BaseAdminController
     {
         try {
             //find menu
+            $response = null;
             $model = Menu::findOne(['id' => $id]);
             if ($model === null) {
                 throw new NotFoundHttpException('content not found');
@@ -157,16 +158,20 @@ class MenuController extends BaseAdminController
                 if ($model->validate() === true) {
                     $model->save();
                     $model->refresh();
+                    $response = $this->redirect(['menu/index']);
                 }
             }
             $menuItemHtml = null;
             if ($this->menuItemBuilder !== null) {
                 $menuItemHtml = $this->menuItemBuilder->build($model);
             }
-            return $this->render('manage', [
-                'model' => $model,
-                'menuItemHtml' => $menuItemHtml,
-            ]);
+            if ($response === null) {
+                $response = $this->render('manage', [
+                    'model' => $model,
+                    'menuItemHtml' => $menuItemHtml,
+                ]);
+            }
+            return $response;
         } catch (Exception $e)  {
             Yii::error($e->getMessage(), __METHOD__);
             throw  $e;

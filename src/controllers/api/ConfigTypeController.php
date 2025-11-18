@@ -13,6 +13,7 @@ namespace fractalCms\content\controllers\api;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\ConfigType;
 use fractalCms\content\models\Content;
 use fractalCms\core\controllers\api\BaseController;
@@ -40,7 +41,7 @@ class ConfigTypeController extends BaseController
                     'allow' => true,
                     'actions' => ['delete'],
                     'verbs' => ['delete'],
-                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.Constant::PERMISSION_ACTION_DELETE],
+                    'roles' => [Constant::PERMISSION_MAIN_CONFIG_TYPE.CoreConstant::PERMISSION_ACTION_DELETE],
                 ],
             ],
             'denyCallback' => function ($rule, $action) {

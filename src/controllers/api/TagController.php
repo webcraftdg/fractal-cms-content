@@ -14,6 +14,7 @@ namespace fractalCms\content\controllers\api;
 use Exception;
 use fractalCms\content\actions\ItemAction;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\Item;
 use fractalCms\content\models\Seo;
 use fractalCms\content\models\Slug;
@@ -59,7 +60,7 @@ class TagController extends BaseController
                     'allow' => true,
                     'actions' => ['delete'],
                     'verbs' => ['delete'],
-                    'roles' => [Constant::PERMISSION_MAIN_TAG.Constant::PERMISSION_ACTION_DELETE],
+                    'roles' => [Constant::PERMISSION_MAIN_TAG.CoreConstant::PERMISSION_ACTION_DELETE],
                     'denyCallback' => function ($rule, $action) {
                         throw new ForbiddenHttpException();
                     }
@@ -68,7 +69,7 @@ class TagController extends BaseController
                     'allow' => true,
                     'actions' => ['activate'],
                     'verbs' => ['get'],
-                    'roles' => [Constant::PERMISSION_MAIN_TAG.Constant::PERMISSION_ACTION_ACTIVATION],
+                    'roles' => [Constant::PERMISSION_MAIN_TAG.CoreConstant::PERMISSION_ACTION_ACTIVATION],
                     'denyCallback' => function ($rule, $action) {
                         throw new ForbiddenHttpException();
                     }
@@ -78,9 +79,9 @@ class TagController extends BaseController
                     'actions' => ['manage-items'],
                     'verbs' => ['get', 'post'],
                     'roles' => [
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_LIST,
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_CREATE,
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_DELETE
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_LIST,
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_CREATE,
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_DELETE
                     ],
                 ]
             ]

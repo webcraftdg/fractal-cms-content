@@ -84,7 +84,7 @@ class ItemAction extends Action
             }
             $itemsQuery = $target->getItems();
 
-            return Yii::$app->controller->renderPartial('@fractalCms\content/views/content/_items', [
+            return Yii::$app->controller->renderPartial('@fractalCms/content/views/content/_items', [
                 'configItems' => Cms::getConfigItems(),
                 'itemsQuery' => $itemsQuery,
                 'target' => $target

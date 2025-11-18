@@ -11,6 +11,7 @@
 namespace fractalCms\content\helpers;
 
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\models\Menu;
 use fractalCms\content\models\MenuItem;
 use yii\base\Component;
@@ -135,10 +136,10 @@ class MenuItemBuilder extends Component
 
             $line .= Html::beginTag('div', ['class' => 'col-sm-3']);
             $line .= Html::beginTag('div', ['class' => 'row align-items-center']);
-            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_UPDATE) === true)  {
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
                 $line .= Html::a($this->iconUpdate, Url::to(['menu-item/update', 'menuId' => $menu->id, 'id' => $model->id]), ['class' => 'icon-link col', 'title' => 'Editer']);
             }
-            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_DELETE) === true)  {
+            if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_DELETE) === true)  {
                 $line .= Html::a($this->iconDelete, Url::to(['api/menu-item/delete', 'id' => $model->id]), ['class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
             } else {
                 $line .= Html::tag('span', '', ['class' => 'col']);

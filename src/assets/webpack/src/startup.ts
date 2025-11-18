@@ -26,6 +26,14 @@ const au = Aurelia
         // customization callback
         options.DefaultTrigger = ValidationTrigger.blur;
     }));
+//@ts-ignore
+if (window.FractalCMSCore) {
+    //@ts-ignore
+    const {CoreAttributes} = window.FractalCMSCore;
+    Aurelia.register(CoreAttributes);
+}
+
+
 
 if(PRODUCTION == false) {
     au.register(LoggerConfiguration.create({

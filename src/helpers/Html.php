@@ -14,8 +14,9 @@ use Exception;
 use fractalCms\content\Module;
 use Yii;
 use yii\web\HttpException;
+use fractalCms\core\helpers\Html as CoreHtml;
 
-class Html extends \yii\helpers\Html
+class Html extends CoreHtml
 {
 
     const CONFIG_TYPE_STRING = 'string';
@@ -29,45 +30,6 @@ class Html extends \yii\helpers\Html
     const CONFIG_TYPE_FORMS = 'forms';
 
     public $cachePath = 'cache';
-
-    /**
-     * @inheritDoc
-     */
-    public static function activeInput($type, $model, $attribute, $options = [])
-    {
-        if ($model->hasErrors($attribute) === true) {
-            $classes = ($options['class']) ?? '';
-            $classes .= ' border-danger text-danger';
-            $options['class'] = $classes;
-        }
-        return parent::activeInput($type, $model, $attribute, $options);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function activeDropDownList($model, $attribute, $items, $options = [])
-    {
-        if ($model->hasErrors($attribute) === true) {
-            $classes = ($options['class']) ?? '';
-            $classes .= ' border-danger text-danger';
-            $options['class'] = $classes;
-        }
-        return parent::activeDropDownList($model, $attribute, $items, $options);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function activeTextarea($model, $attribute, $options = [])
-    {
-        if ($model->hasErrors($attribute) === true) {
-            $classes = ($options['class']) ?? '';
-            $classes .= ' border-danger text-danger';
-            $options['class'] = $classes;
-        }
-        return parent::activeTextarea($model, $attribute, $options );
-    }
 
     /**
      * @inheritDoc

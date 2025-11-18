@@ -20,6 +20,8 @@ use fractalCms\content\helpers\SitemapBuilder;
 use fractalCms\content\console\InitController;
 use fractalCms\content\components\Constant;
 use fractalCms\core\components\Constant as CoreConstant;
+use fractalCms\core\models\Data;
+use fractalCms\content\models\Content;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\console\Application as ConsoleApplication;
@@ -41,7 +43,7 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     public string $cacheImgPath = 'cache';
     public $version = 'v1.7.0';
     public string $name = 'FractalCMS';
-    public string $commandNameSpace = 'fractalCms\content:';
+    public string $commandNameSpace = 'fractalCmsContent:';
 
     private string $contextId = 'fractal-cms-content';
     public function bootstrap($app)
@@ -120,6 +122,19 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
             Yii::error($e->getMessage(), __METHOD__);
             throw  $e;
         }
+    }
+
+    public function getData() : Data
+    {
+        $nbSections = Con::find()->andWhere(['type' => Content::TYPE_SECTION])->count();
+        $nbActicles = Content::find()->andWhere(['type' => Content::TYPE_ARTICLE])->count();
+        $lastDate = Content::find()->max('dateCreate');
+        /** @var Data $data */
+        $data =  new Data(['scenario' => Data::SCENARIO_CREATE]);
+        $data->nbSections = $nbSections;
+        $data->nbActicles = $nbActicles;
+        $data->lastDate = $lastDate;
+        return $data;
     }
 
     /**
@@ -279,6 +294,9 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
             $coreId.'/menu/<id:([^/]+)>/manage-menu-items'=> $contextId.'/api/menu/manage-menu-items',
             $coreId.'/contents/<targetId:([^/]+)>/manage-items'=> $contextId.'/api/content/manage-items',
             $coreId.'/tags/<targetId:([^/]+)>/manage-items'=> $contextId.'/api/tag/manage-items',
+            $coreId.'/api/file/upload'=> $contextId.'/api/file/upload',
+            $coreId.'/api/file/preview'=> $contextId.'/api/file/preview',
+            $coreId.'/api/file/delete'=> $contextId.'/api/file/delete',
         ];
     }
 

@@ -11,6 +11,7 @@
 namespace fractalCms\content\assets;
 
 use fractalCms\content\Module;
+use fractalCms\core\assets\CoreWebpackAsset;
 use yii\caching\Cache;
 use yii\caching\FileDependency;
 use yii\helpers\Json;
@@ -57,7 +58,7 @@ class WebpackAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $webpackDistDirectory = 'build';
+    public $webpackDistDirectory = 'dist';
 
     /**
      * @inheritdoc
@@ -66,7 +67,7 @@ class WebpackAsset extends AssetBundle
         'manifest',
         'vendors',
         'main',
-        'app'
+        'content'
     ];
 
     /**
@@ -82,7 +83,7 @@ class WebpackAsset extends AssetBundle
     public $jsOnly = [
         'manifest',
         'vendors',
-        'app',
+        'content',
     ];
 
     public $js = [
@@ -97,6 +98,7 @@ class WebpackAsset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
+        CoreWebpackAsset::class
     ];
 
     /**

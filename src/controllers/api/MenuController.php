@@ -13,6 +13,7 @@ namespace fractalCms\content\controllers\api;
 
 use Exception;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use fractalCms\content\helpers\MenuItemBuilder;
 use fractalCms\content\models\Menu;
 use fractalCms\core\controllers\api\BaseController;
@@ -42,19 +43,19 @@ class MenuController extends BaseController
                     'allow' => true,
                     'actions' => ['delete'],
                     'verbs' => ['delete'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_DELETE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_DELETE],
                 ],
                 [
                     'allow' => true,
                     'actions' => ['activate'],
                     'verbs' => ['get'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_ACTIVATION],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_ACTIVATION],
                 ],
                 [
                     'allow' => true,
                     'actions' => ['manage-menu-items'],
                     'verbs' => ['post'],
-                    'roles' => [Constant::PERMISSION_MAIN_MENU.Constant::PERMISSION_ACTION_UPDATE],
+                    'roles' => [Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE],
                 ],
             ],
             'denyCallback' => function ($rule, $action) {
@@ -119,7 +120,7 @@ class MenuController extends BaseController
                     if ($this->menuItemBuilder !== null) {
                         $menuItemHtml = $this->menuItemBuilder->build($model);
                     }
-                    $html = $this->renderPartial('@fractalCms\content/views/menu/_menu_item_lines', ['menuItemHtml' => $menuItemHtml]);
+                    $html = $this->renderPartial('@fractalCms/content/views/menu/_menu_item_lines', ['menuItemHtml' => $menuItemHtml]);
                     $response->statusCode = 201;
                     $response->data = $html;
                 } else {

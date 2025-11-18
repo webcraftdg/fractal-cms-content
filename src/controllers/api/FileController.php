@@ -16,6 +16,7 @@ use fractalCms\content\actions\ResumablePreviewAction;
 use fractalCms\content\actions\ResumableUploadAction;
 use fractalCms\core\controllers\api\BaseController;
 use fractalCms\content\components\Constant;
+use fractalCms\core\components\Constant as CoreConstant;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
 
@@ -56,8 +57,8 @@ class FileController extends BaseController
                     'actions' => ['upload', 'preview'],
                     'verbs' => ['get', 'post'],
                     'roles' => [
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_LIST,
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_CREATE,
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_LIST,
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_CREATE,
                         ],
                 ],
                 [
@@ -65,7 +66,7 @@ class FileController extends BaseController
                     'actions' => [ 'delete'],
                     'verbs' => ['delete'],
                     'roles' => [
-                        Constant::PERMISSION_MAIN_ITEM.Constant::PERMISSION_ACTION_DELETE
+                        Constant::PERMISSION_MAIN_ITEM.CoreConstant::PERMISSION_ACTION_DELETE
                     ],
                 ]
             ],

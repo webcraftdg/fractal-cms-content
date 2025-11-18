@@ -2,7 +2,7 @@
     "sourceDir": "./src/assets/webpack",
     "entry": {
         "main": "./scss/main.scss",
-        "app": ["./startup.ts"]
+        "content": ["./startup.ts"]
     },
     "externals": {
     },
@@ -10,7 +10,7 @@
     },
     "subDirectories": {
         "sources": "src",
-        "dist": "build"
+        "dist": "dist"
     },
     "assets": {
         "styles": "css",
