@@ -46,7 +46,7 @@
         "yiisoft/yii2-redis": "~2.0",
         "bower-asset/bootstrap": "~5.0",
         "league/flysystem": "^3.25",
-        "webcraftdg/fractal-cms-core": "dev-feature/integrate"
+        "webcraftdg/fractal-cms-core": "dev-devel"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0",
