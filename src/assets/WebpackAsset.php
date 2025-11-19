@@ -64,8 +64,6 @@ class WebpackAsset extends AssetBundle
      * @inheritdoc
      */
     public $webpackBundles = [
-        'manifest',
-        'vendors',
         'main',
         'content'
     ];
@@ -81,8 +79,6 @@ class WebpackAsset extends AssetBundle
      * @var array list of bundles which are js only
      */
     public $jsOnly = [
-        'manifest',
-        'vendors',
         'content',
     ];
 

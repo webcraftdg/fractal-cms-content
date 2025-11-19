@@ -30,7 +30,7 @@ var config = require(confPath);
 if (argv.env && argv.env.config) {
   config.sourceDir = path.relative(__dirname, argv.env.config);
 }
-
+const quillPath = path.resolve(__dirname, 'node_modules/quill');
 var webpackConfig = {
   entry: config.entry,
   mode: prodFlag ? 'production' : 'development',
@@ -43,7 +43,8 @@ var webpackConfig = {
   output: {
     path: path.resolve(__dirname, config.sourceDir, config.subDirectories.dist),
     filename: prodFlag ?  config.assets.scripts + '/[name].[chunkhash:8].js' : config.assets.scripts + '/[name].js',
-    chunkFilename: prodFlag ?  config.assets.scripts + '/[name].[chunkhash:8].js' : config.assets.scripts + '/[name].js'
+    chunkFilename: prodFlag ?  config.assets.scripts + '/[name].[chunkhash:8].js' : config.assets.scripts + '/[name].js',
+    globalObject: 'this'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -88,10 +89,18 @@ var webpackConfig = {
   module: {
     rules: [
       {
+        test: /quill\/.*\.js$/,
+        include: quillPath,
+        type: "javascript/auto",
+        use: []
+      },
+      {
         enforce: 'pre',
         test: /\.js$/,
         loader: 'source-map-loader',
-        exclude: []
+        exclude: [
+          quillPath
+        ]
       },
       {
         enforce: 'pre',
@@ -177,56 +186,24 @@ var webpackConfig = {
           loader: '@aurelia/webpack-loader',
           options: {}
         },
-        exclude: /node_modules/
+        include: path.resolve(config.sourceDir, config.subDirectories.sources),
       }
     ]
   },
   optimization: {
-    removeEmptyChunks: true,
-    runtimeChunk: {
-      name: "manifest"
-    },
-    splitChunks: {
-      hidePathInfo: true, // prevents the path from being used in the filename when using maxSize
-      chunks: 'initial',
-      cacheGroups: {
-        default: false,
-        vendors: { // picks up everything from node_modules as long as the sum of node modules is larger than minSize
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          priority: 19,
-          enforce: true, // causes maxInitialRequests to be ignored, minSize still respected if specified in cacheGroup
-          minSize: 1000 // use the default minSize
-        },
-        vendorsAsync: { // vendors async chunk, remaining asynchronously used node modules as single chunk file
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors.async',
-          chunks: 'async',
-          priority: 9,
-          reuseExistingChunk: true,
-          minSize: 1000  // use smaller minSize to avoid too much potential bundle bloat due to module duplication.
-        },
-        commonsAsync: { // commons async chunk, remaining asynchronously used modules as single chunk file
-          name: 'commons.async',
-          minChunks: 2, // Minimum number of chunks that must share a module before splitting
-          chunks: 'async',
-          priority: 0,
-          reuseExistingChunk: true,
-          minSize: 1000  // use smaller minSize to avoid too much potential bundle bloat due to module duplication.
-        }
-      }
-    }
+    minimize: prodFlag,
+    runtimeChunk: false,
+    splitChunks: false
   },
   resolve: {
+    symlinks: false,
     alias: {},
     extensions: ['.ts', '.js'],
     modules: [
-      path.resolve(__dirname, config.sourceDir, config.subDirectories.sources, "app"),
+      "node_modules",
       path.resolve(__dirname, config.sourceDir, config.subDirectories.sources),
-      "node_modules"
-    ].map(function(x){
-      return path.resolve(x);
-    })
+      path.resolve(__dirname, config.sourceDir, config.subDirectories.sources, "app")
+    ]
   },
   target: 'web'
 };
