@@ -1,0 +1,16 @@
+{
+  "manifest": {
+    "js": "js/manifest.57c7ea48.js"
+  },
+  "main": {
+    "css": "css/main.2cb1eea7.css",
+    "js": "js/main.2cb1eea7.js",
+    "svg": "scss/img/jsoneditor-icons.svg"
+  },
+  "content": {
+    "js": "js/content.d5f51a5d.js"
+  },
+  "vendors": {
+    "js": "js/vendors.781d237a.js"
+  }
+}

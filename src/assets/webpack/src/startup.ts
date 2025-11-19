@@ -1,0 +1,49 @@
+//Aurelia imports
+import Aurelia, { ConsoleSink, LoggerConfiguration, LogLevel } from 'aurelia';
+import {ValidationHtmlConfiguration, ValidationTrigger} from "@aurelia/validation-html";
+// Plugins imports
+// app imports
+import * as globalAttributes from './app/attributes/index';
+import * as globalComponents from './app/components/index';
+import {FractalCmsApp} from "./app/app";
+import {SelectBeautiful} from "@fractalcms/aurelia-select-beautiful";
+
+declare const webpackBaseUrl: string;
+declare let __webpack_public_path__: string;
+declare let apiBaseUrl: string;
+if (webpackBaseUrl !== undefined) {
+    __webpack_public_path__ = webpackBaseUrl;
+}
+declare const PRODUCTION:boolean;
+
+
+const page = document.querySelector('body') as HTMLElement;
+const au = Aurelia
+     .register(globalAttributes)
+    .register(globalComponents)
+    .register(SelectBeautiful)
+    .register(ValidationHtmlConfiguration.customize((options) => {
+        // customization callback
+        options.DefaultTrigger = ValidationTrigger.blur;
+    }));
+//@ts-ignore
+if (window.FractalCMSCore) {
+    //@ts-ignore
+    const {CoreAttributes} = window.FractalCMSCore;
+    Aurelia.register(CoreAttributes);
+}
+
+
+
+if(PRODUCTION == false) {
+    au.register(LoggerConfiguration.create({
+        level: LogLevel.trace,
+        colorOptions: 'colors',
+        sinks: [ConsoleSink]
+    }));
+
+}
+au.enhance({
+    host: page,
+    component: FractalCmsApp
+});
