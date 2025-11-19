@@ -14,8 +14,17 @@
 
 ## Installation via Composer
 
+### Prérequis
+
+Attention le composant fractal-cms-content est un module tierce, il ne peut vivre que en complément
+de fractal-cms-core. Il est nécessaire d'ajouter le composant webcraftdg\fractal-cms-core
+
 ``
-composer require dghyse\fractal-cms-content
+composer require webcraftdg\fractal-cms-core
+``
+
+``
+composer require webcraftdg\fractal-cms-content
 ``
 
 ### build dist

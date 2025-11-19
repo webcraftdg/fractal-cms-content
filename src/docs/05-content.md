@@ -32,6 +32,7 @@ La création se réalise en cliquant sur le bouton 'Ajouter'.
 * Model : indique si l'article est une **section** ou un **article**
 * Parent : Hiérarchie de l'article
 * Url : Url à partir de laquelle l'article sera accessible sur le front
+* Tag/étiquettes : Etiquette destiner à "marquer" cet article (voir : [Gestion des étiquettes(Tag)](./05-content.md#gestion-des-étiquettestag))
 
 ##### Configuration de l'article
 

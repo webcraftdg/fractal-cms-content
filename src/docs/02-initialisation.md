@@ -5,17 +5,17 @@
 ### Create Rbac (create role and permission)
 
 ``
-php yii.php fractalCms\content:rbac/index
+php yii.php fractalCms:rbac/index
 ``
 
 ### Create Admin (create first admin)
 ``
-php yii.php fractalCms\content:admin/create
+php yii.php fractalCms:admin/create
 ``
 ### INIT content (create initial content)
 
 ``
-php yii.php fractalCms\content:init/index
+php yii.php fractalCmsContent:init/index
 ``
 
 ## Config application
@@ -25,6 +25,7 @@ php yii.php fractalCms\content:init/index
 ````php 
     'bootstrap' => [
         'fractal-cms',
+        'fractal-cms-content',
         //../..
     ],
     'modules' => [

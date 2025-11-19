@@ -20,7 +20,6 @@ use fractalCms\content\helpers\SitemapBuilder;
 use fractalCms\content\console\InitController;
 use fractalCms\content\components\Constant;
 use fractalCms\core\components\Constant as CoreConstant;
-use fractalCms\core\models\Data;
 use fractalCms\content\models\Content;
 use Yii;
 use yii\base\BootstrapInterface;
@@ -124,17 +123,27 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
         }
     }
 
-    public function getData() : Data
+    /**
+     * Get module name
+     *
+     * @return string
+     */
+    public function getName() : string
     {
-        $nbSections = Con::find()->andWhere(['type' => Content::TYPE_SECTION])->count();
+        return $this->name;
+    }
+
+
+    public function getInformations() : array
+    {
+        $nbSections = Content::find()->andWhere(['type' => Content::TYPE_SECTION])->count();
         $nbActicles = Content::find()->andWhere(['type' => Content::TYPE_ARTICLE])->count();
         $lastDate = Content::find()->max('dateCreate');
-        /** @var Data $data */
-        $data =  new Data(['scenario' => Data::SCENARIO_CREATE]);
-        $data->nbSections = $nbSections;
-        $data->nbActicles = $nbActicles;
-        $data->lastDate = $lastDate;
-        return $data;
+        return [
+            'Nombre de sections' => $nbSections,
+            'Nombre d\'articles' => $nbActicles,
+            'Dernière modification' => Yii::$app->formatter->asDate($lastDate)
+        ];
     }
 
     /**
