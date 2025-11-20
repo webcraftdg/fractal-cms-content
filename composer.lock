@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67837ef0c6ed051485de82422a02ce85",
+    "content-hash": "ce15da3e08acdac45c80297138f2cd68",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -23,16 +23,16 @@
         },
         {
             "name": "bower-asset/inputmask",
-            "version": "5.0.9",
+            "version": "5.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
-                "reference": "310a33557e2944daf86d5946a5e8c82b9118f8f7"
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "reference": "e0f39e0c93569c6b494c3a57edef2c59313a6b64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/310a33557e2944daf86d5946a5e8c82b9118f8f7",
-                "reference": "310a33557e2944daf86d5946a5e8c82b9118f8f7"
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/e0f39e0c93569c6b494c3a57edef2c59313a6b64",
+                "reference": "e0f39e0c93569c6b494c3a57edef2c59313a6b64"
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
@@ -44,16 +44,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "3.7.1",
+            "version": "3.6.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "fde1f76e2799dd877c176abde0ec836553246991"
+                "url": "git@github.com:jquery/jquery-dist.git",
+                "reference": "91ef2d8836342875f2519b5815197ea0f23613cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/fde1f76e2799dd877c176abde0ec836553246991",
-                "reference": "fde1f76e2799dd877c176abde0ec836553246991"
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/91ef2d8836342875f2519b5815197ea0f23613cf",
+                "reference": "91ef2d8836342875f2519b5815197ea0f23613cf"
             },
             "type": "bower-asset",
             "license": [
@@ -884,16 +884,16 @@
         },
         {
             "name": "webcraftdg/fractal-cms-core",
-            "version": "dev-devel",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:webcraftdg/fractal-cms-core.git",
-                "reference": "a1fba0ee30602e4385108e3be55c99fb55e827ce"
+                "url": "https://github.com/webcraftdg/fractal-cms-core.git",
+                "reference": "e9bde5a476a606a942a93d3dcef0bc68532ff773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webcraftdg/fractal-cms-core/zipball/a1fba0ee30602e4385108e3be55c99fb55e827ce",
-                "reference": "a1fba0ee30602e4385108e3be55c99fb55e827ce",
+                "url": "https://api.github.com/repos/webcraftdg/fractal-cms-core/zipball/e9bde5a476a606a942a93d3dcef0bc68532ff773",
+                "reference": "e9bde5a476a606a942a93d3dcef0bc68532ff773",
                 "shasum": ""
             },
             "require": {
@@ -919,26 +919,13 @@
                 "yiisoft/yii2-debug": "~2.0",
                 "yiisoft/yii2-gii": "~2.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "fractalCms\\core\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": "tests/"
-                }
-            },
-            "archive": {
-                "exclude": [
-                    "tests"
-                ]
-            },
-            "scripts": {
-                "post-install-cmd": []
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -961,9 +948,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webcraftdg/fractal-cms-core/issues",
-                "source": "https://github.com/webcraftdg/fractal-cms-core/tree/devel"
+                "source": "https://github.com/webcraftdg/fractal-cms-core/tree/v2.0.0"
             },
-            "time": "2025-11-19T10:16:59+00:00"
+            "time": "2025-11-20T14:35:31+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -5672,9 +5659,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "webcraftdg/fractal-cms-core": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
