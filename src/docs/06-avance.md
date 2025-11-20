@@ -56,7 +56,7 @@ public function get($name)
 {
     try {
         $result = [];
-            $menuId = Cms::getParameter('MENU', $name);
+            $menuId = Parameter::getParameter('MENU', $name);
             $menu = Menu::findOne($menuId);
             if ($menu instanceof Menu) {
                 $menuItemsQuery = $menu->getMenuItemChild();
