@@ -30,10 +30,10 @@ php yii.php fractalCmsContent:init/index
     ],
     'modules' => [
         'fractal-cms' => [
-            'class' => FractalCmsCoreModule::class
+            'class' =>  \fractalCms\core\Module::class
         ],
-       'fractal-cms-content' => [
-            'class' => FractalCmsContentModule::class
+        'fractal-cms-content' => [
+            'class' =>  \fractalCms\content\Module::class
         ],
         //../..
     ],

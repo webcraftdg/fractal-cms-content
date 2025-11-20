@@ -101,10 +101,10 @@ sur le _front_.
         try {
             Yii::debug('Trace :'.__METHOD__, __METHOD__);
             $content = $this->getContent();
-            $itemEntete = $content->getItems()->andWhere(['configItemId' => Cms::getParameter('ITEM', 'ENTETE')])->one();
+            $itemEntete = $content->getItems()->andWhere(['configItemId' => Parameter::getParameter('ITEM', 'ENTETE')])->one();
             $itemsQuery = $content->getItems()->andWhere([
                 'not', ['configItemId' => [
-                    Cms::getParameter('ITEM', 'ENTETE'),
+                    Parameter::getParameter('ITEM', 'ENTETE'),
                     ]]]);
             return $this->render('index',
                 [

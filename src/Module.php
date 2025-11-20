@@ -14,6 +14,7 @@ namespace fractalCms\content;
 
 use Exception;
 use fractalCms\content\components\UrlRule;
+use fractalCms\content\console\ItemController;
 use fractalCms\content\helpers\ConfigType;
 use fractalCms\content\helpers\MenuItemBuilder;
 use fractalCms\content\helpers\SitemapBuilder;
@@ -116,6 +117,10 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
             }
             $app->controllerMap[$this->commandNameSpace.'init'] = [
                 'class' => InitController::class,
+            ];
+
+            $app->controllerMap[$this->commandNameSpace.'item'] = [
+                'class' => ItemController::class,
             ];
         }catch (Exception $e) {
             Yii::error($e->getMessage(), __METHOD__);

@@ -132,7 +132,7 @@ L'élément peut-être valorisé. Les informations enregistrées pourront être 
             $content = $this->getContent();
             //Recherche du premier élément "entete" du "Content"
             $itemEntete = $content->getItems()
-                ->andWhere(['configItemId' => Cms::getParameter('ITEM', 'ENTETE')])
+                ->andWhere(['configItemId' => Parameter::getParameter('ITEM', 'ENTETE')])
                 ->one();
             return $this->render('index',
                 [
@@ -243,7 +243,7 @@ Toutes les parties suivantes du formulaire fonctionnent comme le formulaire de c
             Yii::debug('Trace :'.__METHOD__, __METHOD__);
             /** @var Tag $content */
             $content = $this->getTarget();
-            $hero = $content->getItems()->andWhere(['configItemId' => Cms::getParameter('ITEM', 'HERO')])->one();
+            $hero = $content->getItems()->andWhere(['configItemId' => Parameter::getParameter('ITEM', 'HERO')])->one();
             $contentQuery = $content->getContents()->andWhere(['active' => 1]);
             return $this->render('index',
                 [

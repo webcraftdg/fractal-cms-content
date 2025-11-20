@@ -26,7 +26,7 @@ $model = Yii::createObject(Item::class);
     <?php if ($itemsQuery !== null):?>
         <?php
             foreach ($itemsQuery->each() as $index => $item) {
-                echo $this->render('@fractalCms\content/views/templates/template-item',
+                echo $this->render('@fractalCms/content/views/templates/template-item',
                 [
                     'model' => $item,
                     'index' => $index,
