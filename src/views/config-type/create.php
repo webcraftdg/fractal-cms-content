@@ -14,16 +14,18 @@
  */
 use fractalCms\content\models\ConfigType;
 ?>
+<div class="mt-3 flex items-center justify-center">
+    <div class="w-full sm:w-1/2">
+        <h2>Création d'un type d'article</h2>
 
-<div class="row mt-3 align-items-center">
-    <div class="col-sm-6">
-        <h2>Création d'une config</h2>
     </div>
 </div>
-<div class="row m-3">
-    <?php
+<div class="mt-4 flex justify-center">
+    <div class="w-full sm:w-1/2">
+        <?php
         echo $this->render('_form', [
-                'model' => $model,
+            'model' => $model,
             'routes' => $routes]);
-    ?>
+        ?>
+    </div>
 </div>

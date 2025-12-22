@@ -34,18 +34,18 @@ $model = Yii::createObject(\fractalCms\content\models\Item::class);
             }
         ?>
     <?php endif;?>
-    <div class="row justify-content-end m-3">
-        <div class="col-sm-3">
-            <div class="input-group">
+    <div class="fc-row">
+        <div class=" w-48">
+            <div class="flex items-center">
                 <?php
                 echo Html::activeDropDownList($model,
                     'configItemId',
                     ArrayHelper::map($configItems, 'id' , 'name'),
-                [
-                    'class' => 'form-select',
-                ]);
+                    [
+                        'class' => 'fc-form-input',
+                    ]);
                 ?>
-                <button type="button" class="btn btn-primary" name="addItem">
+                <button type="button" class="fc-btn fc-btn-primary" name="addItem">
                     <svg width="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 12H15" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M12 9L12 15" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

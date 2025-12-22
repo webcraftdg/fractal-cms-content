@@ -1,6 +1,6 @@
 <?php
 /**
- * index.php
+ * _formSlug.php
  *
  * PHP Version 8.2+
  *
@@ -15,17 +15,17 @@
 use fractalCms\content\helpers\Html;
 use yii\helpers\ArrayHelper;
 ?>
-<div class="card">
-    <div class="card-header">
+<div class="border rounded-md">
+    <div class="px-3 py-2 border-b">
         Url
     </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="col form-group p-0">
+    <div class="p-3 space-y-2">
+        <div class="flex items-center justify-between">
+            <div class="fc-row">
+                <div class="fc-form-group">
                     <?php
-                    echo Html::activeLabel($slug, 'path', ['label' => 'Url de cet article', 'class' => 'form-label']);
-                    echo Html::activeTextInput($slug, 'path', ['placeholder' => 'Path', 'class' => 'form-control']);
+                    echo Html::activeLabel($slug, 'path', ['label' => 'Url de cet article', 'class' => 'fc-form-label']);
+                    echo Html::activeTextInput($slug, 'path', ['placeholder' => 'Path', 'class' => 'fc-form-input']);
                     ?>
                 </div>
             </div>
