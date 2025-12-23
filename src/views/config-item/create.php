@@ -14,12 +14,12 @@
 
 ?>
 <div class="mt-3 flex items-center justify-center">
-    <div class="w-full sm:w-1/2">
+    <div class="sm:w-3/5">
         <h2>Ajouter une configuration</h2>
     </div>
 </div>
 <div class="mt-4 flex justify-center">
-    <div class="w-full sm:w-1/2">
+    <div class="sm:w-3/5">
         <?php
         echo $this->render('_form', [
             'model' => $model,

@@ -30,7 +30,7 @@ echo Html::tag('fractal-cms-content-manage-alerts', '');
 
 ?>
 <div class="mt-3 flex  justify-center">
-    <div class="w-full sm:w-1/2">
+    <div class="sm:w-3/5">
         <h2>Création d'un article</h2>
         <?php
         echo Html::a('Prévisualisation', Url::toRoute([$model->getRoute()]), [
@@ -41,7 +41,7 @@ echo Html::tag('fractal-cms-content-manage-alerts', '');
     </div>
 </div>
 <div class="mt-4 flex justify-center">
-    <div class="w-full sm:w-1/2">
+    <div class="sm:w-3/5">
         <?php
         echo $this->render('_form', [
             'model' => $model,
