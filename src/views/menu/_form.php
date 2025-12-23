@@ -16,58 +16,52 @@
 use fractalCms\content\helpers\Html;
 use fractalCms\content\models\Menu;
 ?>
-<div class="row">
-    <div class="col-sm-12">
-        <?php echo Html::beginForm('', 'post', []); ?>
-        <div class="row  justify-content-center">
-            <div class="col form-check p-0">
-                <?php
-                echo Html::activeCheckbox($model, 'active', ['label' =>  null, 'class' => 'form-check-input']);
-                echo Html::activeLabel($model, 'active', ['label' => 'Actif', 'class' => 'form-check-label']);
-                ?>
-            </div>
+<?php echo Html::beginForm('', 'post', []); ?>
+<div class="fc-row">
+    <div class="flex mb-4">
+        <div class="flex items-center gap-2">
+            <?php
+            echo Html::activeCheckbox($model, 'active', ['label' =>  null, 'class' => 'fc-form-check']);
+            echo Html::activeLabel($model, 'active', ['label' => 'Actif', 'class' => 'fc-form-label']);
+            ?>
         </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="row  justify-content-center">
-                    <div class="col form-group p-0">
-                        <?php
-                        echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'form-label']);
-                        echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'form-control']);
-                        ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php if ($model->isNewRecord === false):?>
-        <div class="row mt-3">
-            <div class="card">
-                <div class="card-header">
-                    Gestion des éléments du menu
-                </div>
-                <?php
-                    echo Html::beginTag(
-                            'div',
-                        [
-                            'class' => 'cad-body',
-                        ]);
-                    echo $this->render('_items',
-                        [
-                            'menuItemHtml' => $menuItemHtml,
-                            'menu' => $model
-                        ]);
-                ?>
-                <?php
-                    echo Html::endTag('div');
-                ?>
-            </div>
-        </div>
-        <?php endif;?>
-        <div class="row  justify-content-center mt-3">
-            <div  class="col-sm-6 text-center form-group">
-                <button type="submit" class="btn btn-primary">Enregister</button>
-            </div>
-        </div>
-        <?php  echo Html::endForm(); ?>
     </div>
 </div>
+<div class="fc-row">
+    <div class="fc-row">
+        <div class="fc-form-group">
+                <?php
+                echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'fc-form-label']);
+                echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'fc-form-input']);
+                ?>
+        </div>
+    </div>
+    <?php if ($model->isNewRecord === false):?>
+    <div class="fc-row mt-3">
+        <div class="border rounded-md">
+            <div class="px-3 py-2 border-b">
+                <h3>Gestion des éléments du menu</h3>
+            </div>
+            <?php
+                echo Html::beginTag(
+                        'div',
+                    [
+                        'class' => 'p-3 space-y-2',
+                    ]);
+                echo $this->render('_items',
+                    [
+                        'menuItemHtml' => $menuItemHtml,
+                        'menu' => $model
+                    ]);
+            ?>
+            <?php
+                echo Html::endTag('div');
+            ?>
+        </div>
+    </div>
+    <?php endif;?>
+    <div class="fc-form-button-container">
+        <button type="submit" class="fc-form-button">Valider</button>
+    </div>
+</div>
+<?php  echo Html::endForm(); ?>

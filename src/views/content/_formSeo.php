@@ -70,7 +70,7 @@ use fractalCms\content\models\Seo;
         <div class="fc-row">
             <div class="border rounded-md">
                 <div class="px-3 py-2 border-b">
-                    Sitemap
+                    <h3>Sitemap</h3>
                 </div>
                 <div class="p-3 space-y-2 mt-3">
                     <div class="fc-row">
@@ -115,17 +115,17 @@ use fractalCms\content\models\Seo;
         <div class="fc-row">
             <div class="border rounded-md">
                 <div class="px-3 py-2 border-b">
-                    Meta données
+                    <h3>Meta données</h3>
                 </div>
                 <div class="p-3 space-y-2">
                     <div class="fc-row ">
-                        <div class="flex items-center gap-2">
+                        <div class="fc-input-group">
                             <?php
                             echo Html::activeCheckbox($seo, 'noFollow', ['label' =>  null, 'class' => 'fc-form-check']);
                             echo Html::activeLabel($seo, 'noFollow', ['label' => 'Ajoute la meta "no-follow no-index"', 'class' => 'fc-form-label']);
                             ?>
                         </div>
-                        <div class="flex items-center gap-2">
+                        <div class="fc-input-group">
                             <?php
                             echo Html::activeCheckbox($seo, 'ogMeta', ['label' =>  null, 'class' => 'fc-form-check']);
                             echo Html::activeLabel($seo, 'ogMeta', ['label' => 'Générer les Metas OG:*', 'class' => 'fc-form-label']);
@@ -133,13 +133,13 @@ use fractalCms\content\models\Seo;
                         </div>
                     </div>
                     <div class="fc-row">
-                        <div class="flex items-center gap-2">
+                        <div class="fc-input-group">
                             <?php
                             echo Html::activeCheckbox($seo, 'twitterMeta', ['label' =>  null, 'class' => 'fc-form-check']);
                             echo Html::activeLabel($seo, 'twitterMeta', ['label' => 'Générer les Metas Twitter:*', 'class' => 'fc-form-label']);
                             ?>
                         </div>
-                        <div class="flex items-center gap-2">
+                        <div class="fc-input-group">
                             <?php
                             echo Html::activeCheckbox($seo, 'addJsonLd', ['label' =>  null, 'class' => 'fc-form-check']);
                             echo Html::activeLabel($seo, 'addJsonLd', ['label' => 'Générer le Meta JSONLD', 'class' => 'fc-form-label']);

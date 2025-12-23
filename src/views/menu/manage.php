@@ -15,16 +15,18 @@
 use fractalCms\content\models\Menu;
 ?>
 
-<div class="row mt-3 align-items-center">
-    <div class="col-sm-8">
+<div class="mt-3 flex  justify-center">
+    <div class="w-full sm:w-1/2">
         <h2>Création d'un menu</h2>
     </div>
 </div>
-<div class="row m-3">
-    <?php
+<div class="mt-4 flex justify-center">
+    <div class="w-full sm:w-1/2">
+        <?php
         echo $this->render('_form', [
             'model' => $model,
             'menuItemHtml' => $menuItemHtml
         ]);
-    ?>
+        ?>
+    </div>
 </div>

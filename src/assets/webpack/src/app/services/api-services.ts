@@ -69,6 +69,7 @@ export class ApiServices {
             method: 'POST',
             body:JSON.stringify(data),
             headers : {
+                ContentType: 'application/json',
                 Accept: 'text/html'
             }
         })

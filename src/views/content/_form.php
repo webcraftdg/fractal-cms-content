@@ -24,8 +24,8 @@ use fractalCms\content\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 ?>
+<?php echo Html::beginForm('', 'post', ['enctype' => 'multipart/form-data']); ?>
 <div class="fc-row">
-        <?php echo Html::beginForm('', 'post', ['enctype' => 'multipart/form-data']); ?>
     <div class="flex mb-4">
         <div class="flex items-center gap-2">
             <?php
@@ -101,36 +101,34 @@ use yii\helpers\ArrayHelper;
         echo $this->render('_formSeo', ['seo' => $seo]);
         ?>
     </div>
-<div class="fc-row mt-3">
-    <div class="border rounded-md">
-        <div class="px-3 py-2 border-b">
-            <h2>
-            Gestion des éléments
-            </h2>
+    <div class="fc-row mt-3">
+        <div class="border rounded-md">
+            <div class="px-3 py-2 border-b">
+                <h2>Gestion des éléments</h2>
+            </div>
+            <?php
+            echo Html::beginTag(
+                'div',
+                [
+                    'class' => 'p-3 space-y-2',
+                ]);
+            echo Html::tag('fractal-cms-content-manage-items', '',
+                [
+                    'id.bind' => $model->id,
+                    'item-api-url' => '/contents/{targetId}/manage-items',
+                    'view' => $this->render('_items', [
+                        'itemsQuery' => $itemsQuery,
+                        'configItems' => $configItems,
+                        'target' => $model
+                    ])
+                ]
+            );
+            ?>
+            <?php
+            echo Html::endTag('div');
+            ?>
         </div>
-        <?php
-        echo Html::beginTag(
-            'div',
-            [
-                'class' => 'p-3 space-y-2',
-            ]);
-        echo Html::tag('fractal-cms-content-manage-items', '',
-            [
-                'id.bind' => $model->id,
-                'item-api-url' => '/contents/{targetId}/manage-items',
-                'view' => $this->render('_items', [
-                    'itemsQuery' => $itemsQuery,
-                    'configItems' => $configItems,
-                    'target' => $model
-                ])
-            ]
-        );
-        ?>
-        <?php
-        echo Html::endTag('div');
-        ?>
     </div>
-</div>
 <?php endif;?>
 <div class="fc-form-button-container">
 <button type="submit" class="fc-form-button">Valider</button>

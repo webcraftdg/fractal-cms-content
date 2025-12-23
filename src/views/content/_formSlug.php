@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
 ?>
 <div class="border rounded-md">
     <div class="px-3 py-2 border-b">
-        Url
+        <h3>Url</h3>
     </div>
     <div class="p-3 space-y-2">
         <div class="flex items-center justify-between">

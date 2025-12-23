@@ -36,7 +36,7 @@ echo Html::tag('fractal-cms-content-manage-alerts', '');
         echo Html::a('Prévisualisation', Url::toRoute([$model->getRoute()]), [
             'class' => 'fc-btn fc-btn-primary',
             'target' => '_blank'
-        ])
+        ]);
         ?>
     </div>
 </div>

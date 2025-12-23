@@ -32,7 +32,7 @@ class ResumablePreviewAction extends Action
     public function run()
     {
         $name = Yii::$app->request->getQueryParam('name', null);
-        $name = str_replace('@web/', '@webroot/', $name);
+        $name = str_replace('@web/', '@runtime/', $name);
         $realName = Yii::getAlias($name);
         if (file_exists($realName) === false) {
             throw new NotFoundHttpException();

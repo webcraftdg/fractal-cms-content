@@ -39,7 +39,7 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
     echo Html::tag('div', $name, ['class' => implode(' ', $className)]);
     echo Html::tag('div', ucfirst($model->type), ['class' => 'flex-1 font-medium']);
     echo Html::beginTag('div', ['class' => 'flex-1 font-medium']);
-    echo Html::beginTag('div', ['class' => 'flex justify-center gap-3 sm:w-auto']);
+    echo Html::beginTag('div', ['class' => 'flex justify-end gap-3 sm:w-auto']);
     if (Yii::$app->user->can(Constant::PERMISSION_MAIN_CONTENT.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
         echo Html::beginTag('a', ['href' => Url::to(['content/update', 'id' => $model->id]), 'class' => 'text-indigo-500 hover:text-indigo-700 transition icon-link', 'title' => 'Editer']);
         ?>
@@ -71,7 +71,7 @@ $parentDeep = (isset($parentDeep) === true) ? $parentDeep : 0;
         <?php
         echo Html::endTag('a');
     } else {
-        echo Html::tag('span', '', ['class' => 'col']);
+        echo Html::tag('span', '', ['class' => '']);
     }
 
     echo Html::endTag('div');

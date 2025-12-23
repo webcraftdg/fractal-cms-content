@@ -56,25 +56,27 @@ class MenuItemBuilder extends Component
             Yii::debug(Constant::TRACE_DEBUG, __METHOD__, __METHOD__);
 
             $classLi = [];
-            $classLi[] = 'menu-item';
-            $classMargin = 'p-0';
+            $classLi[] = 'menu-item ';
+            $classMargin = '';
             if($parent !== null) {
                 $deep = $parent->order;
                 if ($deep !== null && $deep !== 1) {
-                    $classMargin = 'ps-'.$deep;
+                    $deep = ((int)$deep % 2 === 0) ? (int)$deep : 2;
+                    $classMargin = 'ml-'.$deep;
                 }
                 $classLi[] = $classMargin;
             }
 
             $options = [
-                'class'=> 'list-none ',
+                'class'=> 'fc-list ',
             ];
 
             if ($lastParent !== null) {
                 $deep = $lastParent->order;
                 if ($deep !== null && $deep !== 1) {
-                    $classMargin = 'ps-'.$deep;
-                    $options['class'] = $options['class'] .= $classMargin;
+                    $deep = ((int)$deep % 2 === 0) ? (int)$deep : 2;
+                    $classMargin = 'ml-'.$deep;
+                    $options['class'] .= $classMargin;
                 }
             }
             $html = Html::beginTag('ul', $options);
@@ -124,28 +126,26 @@ class MenuItemBuilder extends Component
     {
         try {
 
-            $line =  Html::beginTag('div', ['class' => 'row align-items-center  p-1 border mt-1 border-primary']);
+            $line =  Html::beginTag('div', ['class' => 'fc-list-item']);
             $className = [];
-            $className[] = 'col-sm-6';
+            $className[] = 'flex-1 font-medium';
             $route = $model->route;
             if ($model->content instanceof \fractalCms\content\models\Content) {
                 $route = $model->content->getRoute();
             }
             $line .= Html::tag('div', ucfirst($model->name), ['class' => implode(' ', $className)]);
-            $line .= Html::tag('div', $route, ['class' => 'col-sm-3']);
+            $line .= Html::tag('div', $route, ['class' => 'flex-1 font-medium']);
 
-            $line .= Html::beginTag('div', ['class' => 'col-sm-3']);
-            $line .= Html::beginTag('div', ['class' => 'row align-items-center']);
+            $line .= Html::beginTag('div', ['class' => 'flex justify-center gap-3 sm:w-auto']);
             if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_UPDATE) === true)  {
-                $line .= Html::a($this->iconUpdate, Url::to(['menu-item/update', 'menuId' => $menu->id, 'id' => $model->id]), ['class' => 'icon-link col', 'title' => 'Editer']);
+                $line .= Html::a($this->iconUpdate, Url::to(['menu-item/update', 'menuId' => $menu->id, 'id' => $model->id]), ['class' => 'text-indigo-500 hover:text-indigo-700 transition icon-link', 'title' => 'Editer']);
             }
             if (Yii::$app->user->can(Constant::PERMISSION_MAIN_MENU.CoreConstant::PERMISSION_ACTION_DELETE) === true)  {
-                $line .= Html::a($this->iconDelete, Url::to(['api/menu-item/delete', 'id' => $model->id]), ['class' => 'icon-link col user-button-delete', 'title' => 'Supprimer']);
+                $line .= Html::a($this->iconDelete, Url::to(['api/menu-item/delete', 'id' => $model->id]), ['class' => 'icon-link text-red-500 hover:text-red-700 transition user-button-delete', 'title' => 'Supprimer']);
             } else {
                 $line .= Html::tag('span', '', ['class' => 'col']);
             }
 
-            $line .= Html::endTag('div');
             $line .= Html::endTag('div');
             $line .= Html::endTag('div');
             return $line;

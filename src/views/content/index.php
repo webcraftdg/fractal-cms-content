@@ -21,7 +21,6 @@ use yii\helpers\Url;
 <div class="fc-list-header">
     <div>
         <h2 class="fc-list-header-title">Liste des articles</h2>
-
     </div>
     <div>
         <?php
