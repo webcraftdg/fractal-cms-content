@@ -32,7 +32,7 @@
         "ext-gd": "*",
         "ext-fileinfo": "*",
         "yiisoft/yii2": "^2.0",
-        "webcraftdg/fractal-cms-core": "v2.1.0"
+        "webcraftdg/fractal-cms-core": "v2.2.0"
     },
     "require-dev": {
         "codeception/codeception": "^5.3",
