@@ -13,15 +13,18 @@
  */
 use fractalCms\content\models\ConfigType;
 ?>
-<div class="row mt-3 align-items-center">
-    <div class="col-sm-6">
-        <h2>Mettre à jour d'une config</h2>
+<div class="mt-3 flex items-center justify-center">
+    <div class="sm:w-3/5">
+        <h2>Mettre à jour d'une type d'article</h2>
+
     </div>
 </div>
-<div class="row m-3">
-    <?php
-    echo $this->render('_form', [
-        'model' => $model,
-        'routes' => $routes]);
-    ?>
+<div class="mt-4 flex justify-center">
+    <div class="sm:w-3/5">
+        <?php
+        echo $this->render('_form', [
+            'model' => $model,
+            'routes' => $routes]);
+        ?>
+    </div>
 </div>

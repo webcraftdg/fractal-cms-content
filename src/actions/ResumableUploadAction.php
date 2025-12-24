@@ -22,7 +22,7 @@ class ResumableUploadAction extends ViewAction
     /**
      * @var string
      */
-    public $uploadAlias = '@webapp/runtime/uploads';
+    public $uploadAlias = '@runtime/uploads';
 
     /**
      * @var string
@@ -53,6 +53,7 @@ class ResumableUploadAction extends ViewAction
      * @var string
      */
     protected $finalFilename = null;
+
 
     /**
      * Upload file

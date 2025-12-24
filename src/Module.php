@@ -139,6 +139,10 @@ class Module extends \yii\base\Module implements BootstrapInterface, FractalCmsC
     }
 
 
+    /**
+     * @return array
+     * @throws \yii\base\InvalidConfigException
+     */
     public function getInformations() : array
     {
         $nbSections = Content::find()->andWhere(['type' => Content::TYPE_SECTION])->count();

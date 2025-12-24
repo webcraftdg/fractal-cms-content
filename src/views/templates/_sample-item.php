@@ -22,7 +22,7 @@ use fractalCms\content\models\Item;
 <?php
 //for each attribute
 foreach ($model->configItem->configArray as $attribute => $data):?>
-    <div class="col form-group p-0 mt-1">
+    <div class="fc-form-group mt-1">
         <?php
         $title = ($data['title']) ?? '';
         $description = ($data['description']) ?? '';
@@ -30,9 +30,9 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
         $accept = ($data['accept']) ?? null;
         switch ($data['type']) {
             case Html::CONFIG_TYPE_STRING:
-                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'form-label']);
+                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'fc-form-label']);
                 echo Html::activeTextInput($target, 'items['.$model->id.']['.$attribute.']', [
-                    'placeholder' => $title, 'class' => 'form-control',
+                    'placeholder' => $title, 'class' => 'fc-form-input',
                     'value' => $model->$attribute]);
                 break;
             case Html::CONFIG_TYPE_FILE:
@@ -46,13 +46,13 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
                 ]);
                 break;
             case Html::CONFIG_TYPE_TEXT:
-                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'form-label']);
+                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'fc-form-label']);
                 if(is_array($options) === false) {
                     $options = [];
                 }
                 $options['placeholder'] = $title;
                 $options['value'] = $model->$attribute;
-                $class = 'form-control';
+                $class = 'fc-form-input';
                 if (isset($options['class']) === true) {
                     $options['class'] = $options['class'].' '.$class;
                 }
@@ -60,7 +60,7 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
                 echo Html::activeTextarea($target, 'items['.$model->id.']['.$attribute.']',$options);
                 break;
             case Html::CONFIG_TYPE_WYSIWYG:
-                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'form-label']);
+                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'fc-form-label']);
                 echo Html::activeHiddenInput($target, 'items['.$model->id.']['.$attribute.']', ['value' => $model->$attribute, 'class' => 'wysiwygInput']);
                 $inputNameId = Html::getInputId($target, 'items['.$model->id.']['.$attribute.']');
                 echo Html::tag('div', '',
@@ -87,20 +87,20 @@ foreach ($model->configItem->configArray as $attribute => $data):?>
                 $tags = Cms::getTags(true, 'Tag');
                 $routesIntern = Cms::getInternCmsRoutes();
                 $contents = ArrayHelper::merge($contents, $tags, $routesIntern);
-                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'form-label']);
+                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'fc-form-label']);
                 echo Html::activeDropDownList($target, 'items['.$model->id.']['.$attribute.']', ArrayHelper::map($contents, 'route', 'name', 'group'), [
                     'prompt' => 'Sélectionner une cible',
                     'value' => $model->$attribute,
-                    'class' => 'form-control',
+                    'class' => 'fc-form-input',
                 ]);
                 break;
             case Html::CONFIG_TYPE_FORMS:
                 $forms = Cms::getForms();
-                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'form-label']);
+                echo Html::activeLabel($target, 'items['.$model->id.']['.$attribute.']', ['label' => $title, 'class' => 'fc-form-label']);
                 echo Html::activeDropDownList($target, 'items['.$model->id.']['.$attribute.']', ArrayHelper::map($forms, 'id', 'name'), [
                     'prompt' => 'Sélectionner un formulaire',
                     'value' => $model->$attribute,
-                    'class' => 'form-control',
+                    'class' => 'fc-form-input',
                 ]);
                 break;
         }

@@ -26,27 +26,20 @@ use yii\helpers\Url;
 $configItems = ($configItems) ?? [];
 echo Html::tag('fractal-cms-content-manage-alerts', '');
 ?>
-<div class="row mt-3 align-items-center">
-    <div class="col-sm-8">
+<div class="mt-3 flex  justify-center">
+    <div class="w-3/5">
         <h2>Création d'une étiquette (Tag)</h2>
-    </div>
-    <div class="col-sm-4">
-        <div class="row align-items-center">
-            <div class="col-sm-4">
-                <div class="col form-group p-0">
-                    <?php
-                    echo Html::a('Prévisualisation', Url::toRoute([$model->getRoute()]), [
-                           'class' => 'btn btn-primary',
-                        'target' => '_blank'
-                    ])
-                    ?>
-                </div>
-            </div>
-        </div>
+        <?php
+        echo Html::a('Prévisualisation', Url::toRoute([$model->getRoute()]), [
+            'class' => 'fc-btn fc-btn-primary',
+            'target' => '_blank'
+        ]);
+        ?>
     </div>
 </div>
-<div class="row m-3">
-    <?php
+<div class="mt-4 flex justify-center">
+    <div class="w-3/5">
+        <?php
         echo $this->render('_form', [
             'model' => $model,
             'slug' => $slug,
@@ -55,5 +48,6 @@ echo Html::tag('fractal-cms-content-manage-alerts', '');
             'configItems' => $configItems,
             'itemsQuery' => $itemsQuery
         ]);
-    ?>
+        ?>
+    </div>
 </div>

@@ -269,9 +269,9 @@ export class File
         const finalFilename = message.hasOwnProperty('finalFilename') ? message['finalFilename'] : null;
         this.inProgress = false;
         if (this.multiple === false) {
-            this.setFile('@webapp/runtime/uploads/' + finalFilename, file);
+            this.setFile('@runtime/uploads/' + finalFilename, file);
         } else {
-            this.appendFile('@webapp/runtime/uploads/' + finalFilename, file);
+            this.appendFile('@runtime/uploads/' + finalFilename, file);
         }
         this.platform.taskQueue.queueTask(() => {
             const messageAlert:IAlertAddMessage = {

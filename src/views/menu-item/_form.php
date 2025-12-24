@@ -19,54 +19,44 @@ use fractalCms\content\helpers\Html;
 use fractalCms\content\models\MenuItem;
 use yii\helpers\ArrayHelper;
 ?>
-<div class="row">
-    <div class="col-sm-12">
-        <?php echo Html::beginForm('', 'post'); ?>
-        <div class="row">
-            <div class="col form-group p-0">
-                <?php
-                echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'form-label']);
-                echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'form-control']);
-                ?>
-            </div>
+<?php echo Html::beginForm('', 'post'); ?>
+<div class="fc-row">
+    <div class="fc-form-group">
+        <?php
+        echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'fc-form-label']);
+        echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'fc-form-input']);
+        ?>
+    </div>
+    <div class="fc-form-group">
+        <?php
+        echo Html::activeLabel($model, 'contentId', ['label' => 'Route CMS', 'class' => 'fc-form-label']);
+        echo Html::activeDropDownList($model, 'contentId', ArrayHelper::map($contents, 'id', 'name'), [
+            'prompt' => 'Sélectionner une route interne au CMS', 'class' => 'fc-form-input',
+        ]);
+        ?>
+    </div>
+    <?php if (empty($routes) === false):?>
+    <div class="fc-form-group">
+        <?php
+        echo Html::activeLabel($model, 'route', ['label' => 'Route Locale', 'class' => 'fc-form-label']);
+        echo Html::activeDropDownList($model, 'route', ArrayHelper::map($routes, 'id', 'name'), [
+            'prompt' => 'Sélectionner une route interne à l\'application', 'class' => 'fc-form-input',
+        ]);
+        ?>
+    </div>
+    <?php endif;?>
+    <div class="fc-form-group">
+        <?php
+        echo Html::activeLabel($model, 'menuItemId', ['label' => 'Parent', 'class' => 'fc-form-label']);
+        echo Html::activeDropDownList($model, 'menuItemId', ArrayHelper::map($menusItems, 'id', 'name'), [
+            'prompt' => 'Sélectionner un Parent', 'class' => 'fc-form-input',
+        ]);
+        ?>
+    </div>
+    <div class="fc-row mt-3">
+        <div class="fc-form-button-container">
+            <button type="submit" class="fc-form-button">Valider</button>
         </div>
-        <div class="row">
-            <div class="col form-group p-0">
-                <?php
-                echo Html::activeLabel($model, 'contentId', ['label' => 'Route CMS', 'class' => 'form-label']);
-                echo Html::activeDropDownList($model, 'contentId', ArrayHelper::map($contents, 'id', 'name'), [
-                    'prompt' => 'Sélectionner une route interne au CMS', 'class' => 'form-control',
-                ]);
-                ?>
-            </div>
-        </div>
-        <?php if (empty($routes) === false):?>
-        <div class="row">
-            <div class="col form-group p-0">
-                <?php
-                echo Html::activeLabel($model, 'route', ['label' => 'Route Locale', 'class' => 'form-label']);
-                echo Html::activeDropDownList($model, 'route', ArrayHelper::map($routes, 'id', 'name'), [
-                    'prompt' => 'Sélectionner une route interne à l\'application', 'class' => 'form-control',
-                ]);
-                ?>
-            </div>
-        </div>
-        <?php endif;?>
-        <div class="row">
-            <div class="col form-group p-0">
-                <?php
-                echo Html::activeLabel($model, 'menuItemId', ['label' => 'Parent', 'class' => 'form-label']);
-                echo Html::activeDropDownList($model, 'menuItemId', ArrayHelper::map($menusItems, 'id', 'name'), [
-                    'prompt' => 'Sélectionner un Parent', 'class' => 'form-control',
-                ]);
-                ?>
-            </div>
-        </div>
-        <div class="row  justify-content-center mt-3">
-            <div  class="col-sm-6 text-center form-group">
-                <button type="submit" class="btn btn-primary">Enregister</button>
-            </div>
-        </div>
-        <?php  echo Html::endForm(); ?>
     </div>
 </div>
+<?php  echo Html::endForm(); ?>
