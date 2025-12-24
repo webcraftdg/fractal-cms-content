@@ -10,7 +10,7 @@
         "blog",
         "website"
     ],
-    "version": "v2.0.0",
+    "version": "v2.2.0",
     "homepage": "https://github.com/webcraftdg/fractal-cms-content",
     "type": "library",
     "license": "MIT",
@@ -23,30 +23,18 @@
             "email": "davidg@webcraftdg.fr"
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.3",
         "ext-intl": "*",
         "ext-dom": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
         "ext-gd": "*",
         "ext-fileinfo": "*",
-        "vlucas/phpdotenv": "~5.0",
-        "yiisoft/yii2": "~2.0",
-        "yiisoft/yii2-redis": "~2.0",
-        "bower-asset/bootstrap": "~5.0",
-        "league/flysystem": "^3.25",
-        "webcraftdg/fractal-cms-core": "v2.0.0"
+        "yiisoft/yii2": "^2.0",
+        "webcraftdg/fractal-cms-core": "v2.1.0"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.0",
-        "yiisoft/yii2-gii": "~2.0",
         "codeception/codeception": "^5.3",
         "codeception/module-phpbrowser": "*",
         "codeception/module-asserts": "*",

@@ -16,42 +16,34 @@
 use yii\helpers\Html;
 use fractalCms\content\models\ConfigItem;
 ?>
-<div class="row">
-    <div class="col-sm-12">
-        <?php if (empty($model->errors) === false): ?>
-                <?php foreach ($model->errors as $error):?>
-                <div class="row justify-items-center justify-content-center m-0 v">
-                        <?php echo Html::tag('p', $error['0'], ['class' => ' col text-bg-warning text-white m-0']);?>
-                </div>
-                <?php endforeach;?>
-        <?php endif; ?>
+<div class="fc-row">
+    <?php if (empty($model->errors) === false): ?>
+            <?php foreach ($model->errors as $error):?>
+            <div class="fc-row">
+                    <?php echo Html::tag('p', $error['0'], ['class' => ' fc-error']);?>
+            </div>
+            <?php endforeach;?>
+    <?php endif; ?>
 
 
-        <?php echo Html::beginForm(); ?>
+    <?php echo Html::beginForm(); ?>
 
-        <div class="row  justify-content-center">
-            <div class="col form-group p-0">
-                <?php
-                echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'form-label']);
-                echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'form-control']);
-                ?>
-            </div>
-        </div>
-        <div class="row  justify-content-center">
-            <div class="col form-group p-0">
-                <div fractal-cms-content-json-editor="" class="mt-3">
-                    <?php
-                    echo Html::activeHiddenInput($model, 'config', ['class' => 'jsonInput']);
-                    ?>
-                    <div class="jsonEditor"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row  justify-content-center mt-3">
-            <div  class="col-sm-6 text-center form-group">
-                <button type="submit" class="btn btn-primary">Valider</button>
-            </div>
-        </div>
-        <?php  echo Html::endForm(); ?>
+    <div class="fc-form-group">
+        <?php
+        echo Html::activeLabel($model, 'name', ['label' => 'Nom', 'class' => 'fc-form-label']);
+        echo Html::activeTextInput($model, 'name', ['placeholder' => 'Nom', 'class' => 'fc-form-input']);
+        ?>
     </div>
+    <div class="fc-form-group">
+        <div fractal-cms-content-json-editor="" class="mt-3">
+            <?php
+            echo Html::activeHiddenInput($model, 'config', ['class' => 'jsonInput']);
+            ?>
+            <div class="jsonEditor"></div>
+        </div>
+    </div>
+    <div class="fc-form-button-container">
+        <button type="submit" class="fc-form-button">Valider</button>
+    </div>
+    <?php  echo Html::endForm(); ?>
 </div>

@@ -4,7 +4,7 @@
 
 ### Backend
 
-* Php : >= 8.2
+* Php : >= 8.3
 * YiiFramework >= 2.0
 
 ### Front

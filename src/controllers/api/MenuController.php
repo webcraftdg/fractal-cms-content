@@ -105,6 +105,7 @@ class MenuController extends BaseController
         try {
             $response = Yii::$app->getResponse();
             $request = Yii::$app->request;
+            $isPost = $request->isPost;
             $id = $request->getQueryParam('id');
             $body = $request->getBodyParams();
             $model = Menu::findOne(['id' => $id]);

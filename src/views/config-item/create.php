@@ -13,16 +13,17 @@
  */
 
 ?>
-
-<div class="row mt-3 align-items-center">
-    <div class="col-sm-6">
+<div class="mt-3 flex items-center justify-center">
+    <div class="sm:w-3/5">
         <h2>Ajouter une configuration</h2>
     </div>
 </div>
-<div class="row m-3">
-    <?php
+<div class="mt-4 flex justify-center">
+    <div class="sm:w-3/5">
+        <?php
         echo $this->render('_form', [
-                'model' => $model,
+            'model' => $model,
         ]);
-    ?>
+        ?>
+    </div>
 </div>
