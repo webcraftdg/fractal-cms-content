@@ -68,7 +68,7 @@ export class Item {
                 const messageAlert:IAlertAddMessage = {
                     id:window.crypto.randomUUID(),
                     message:getTextAlert(elementName),
-                    color:'alert-warning'
+                    color:'fc-warning'
                 }
                 this.platform.taskQueue.queueTask(() => {
                     this.ea.publish(EEvents.ACTION_BUTTON, message);

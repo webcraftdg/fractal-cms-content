@@ -21,11 +21,11 @@ use fractalCms\content\models\Tag;
 use fractalCms\content\models\Content;
 ?>
 <?php echo Html::beginTag('div', [
-    'class' => 'fc-row mt-1',
+    'class' => 'fc-row mt-3',
     'fractal-cms-content-item' => 'id.bind:'.$model->id.';target-id.bind:'.$target->id,
 ]);?>
     <div class="border rounded-md">
-        <div class="px-3 py-2 border-b">
+        <div class="px-3 py-2 border-b fc-primary">
             <div class="flex items-center  justify-between gap-2">
             <h3><?php echo ucfirst($model->configItem->name);?></h3>
                 <div class="flex gap-1 align-items-center">
