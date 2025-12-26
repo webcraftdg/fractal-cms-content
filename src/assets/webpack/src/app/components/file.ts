@@ -104,7 +104,7 @@ export class File
                const messageAlert:IAlertAddMessage = {
                    id:window.crypto.randomUUID(),
                    message:'Le fichier a été supprimé',
-                   color:'alert-warning'
+                   color:'fc-warning'
                }
                this.ea.publish(EEvents.ACTION_ADD_ALERT, messageAlert);
            }, {delay:150})
@@ -277,7 +277,7 @@ export class File
             const messageAlert:IAlertAddMessage = {
                 id:window.crypto.randomUUID(),
                 message:'Le fichier a été ajouté',
-                color:'alert-success'
+                color:'fc-success'
             }
             this.ea.publish(EEvents.ACTION_ADD_ALERT, messageAlert);
         }, {delay:150})

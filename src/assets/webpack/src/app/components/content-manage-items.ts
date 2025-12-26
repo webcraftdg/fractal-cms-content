@@ -90,7 +90,7 @@ export class ContentManageItems
                     const message:IAlertAddMessage = {
                         id:window.crypto.randomUUID(),
                         message:'Un item a été ajouté',
-                        color:'alert-success'
+                        color:'fc-success'
                     };
                     this.ea.publish(EEvents.ACTION_ADD_ALERT, message);
                 }
@@ -101,7 +101,7 @@ export class ContentManageItems
                 const message:IAlertAddMessage = {
                     id:window.crypto.randomUUID(),
                     message:'Un erreur c\'est produite',
-                    color:'alert-danger'
+                    color:'fc-danger'
                 };
                 this.ea.publish(EEvents.ACTION_ADD_ALERT, message);
             });
