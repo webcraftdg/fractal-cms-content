@@ -1,5 +1,5 @@
 <template>
-    <div class="row sticky-top" repeat.for="alert of alerts">
+    <div class="fc-row fixed top-0" repeat.for="alert of alerts">
         <fractal-cms-content-alert repeat.for="alert of alerts" id.bind="alert.id" message.bind="alert.message" color.bind="alert.color"></fractal-cms-content-alert>
     </div>
 </template>

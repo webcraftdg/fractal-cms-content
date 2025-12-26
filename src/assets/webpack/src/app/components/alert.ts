@@ -27,7 +27,7 @@ export class Alert
         this.logger.trace('attached', this.id);
         this.platform.setTimeout(() => {
             this.close();
-        }, 1500);
+        }, 750);
     }
 
     public onClose(event:Event){
